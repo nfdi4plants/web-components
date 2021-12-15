@@ -4,7 +4,7 @@ import { property } from 'lit/decorators.js';
 export class CLIOptionDescription extends LitElement {
     static styles = css`
         dt {
-            font-family: var(--consolas);
+            font-family: var(--argument-font);
             font-weight: bold;
             color: var(--argument-color, black);
             padding-left: 25px;
@@ -18,9 +18,16 @@ export class CLIOptionDescription extends LitElement {
             display: inline;
             color: var(--heading-color, black);
         }
+        .exmpl {
+            font-family: var(--argument-font);
+            font-style: italic;
+            color: var(--argument-example-color, black);
+        }
     `;
 
     @property({ type: String }) option = '--blank';
+
+    @property({ type: String }) abbreviation = '';
 
     @property({ type: String }) description = 'Blank description';
 
@@ -35,14 +42,25 @@ export class CLIOptionDescription extends LitElement {
         return '';
     }
 
+    get exmpl() {
+        if (this.example !== '') {
+            return 'Example: ';
+        }
+        return '';
+    }
+
     render() {
         return html`
+            <dt>${this.abbreviation}</dt>
             <dt>
                 ${this.option}
                 <p>${this.mand}</p>
             </dt>
             <dd>${this.description}</dd>
-            <dd style="">${this.example}</dd>
+            <dd>
+                ${this.exmpl}
+                <p class="exmpl">${this.example}</p>
+            </dd>
             <br />
         `;
     }
