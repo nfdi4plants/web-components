@@ -17,18 +17,6 @@ export class CodeComponent extends LitElement {
             line-height: 18px;
             font-weight: bold;
         }
-
-        h2 {
-            font-family: 'Roboto Slab', 'DejaVu Serif', Georgia,
-                'Times New Roman', sans-serif !important;
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            line-height: 44px;
-            color: var(--heading-color, black);
-            text-rendering: optimizelegibility;
-        }
-
         pre {
             padding: 1em;
             -webkit-text-size-adjust: 100%;
@@ -56,16 +44,6 @@ export class CodeComponent extends LitElement {
     }
 
     render() {
-        return html`
-            <h1>Code component</h1>
-            <h2>Example Code</h2>
-
-            <pre>
-
-${this.splitedLines}
-
-            </pre
-            >
-        `;
+        return html` <pre>${this.splitedLines}</pre> `;
     }
 }
