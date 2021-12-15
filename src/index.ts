@@ -1,3 +1,2 @@
 export { TestComponent } from './TestComponent.js';
-
-export { MySynopsis } from './MySynopsis.js';
+export { CLISynopsis } from './CLISynopsis.js';
