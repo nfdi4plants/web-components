@@ -6,7 +6,7 @@ export class TestComponent extends LitElement {
         :host {
             display: block;
             padding: 25px;
-            color: var(--test-component-text-color, #000);
+            color: var(--heading-color, #000);
         }
     `;
 
@@ -20,7 +20,7 @@ export class TestComponent extends LitElement {
 
     render() {
         return html`
-            <h2>${this.title} Nr. ${this.counter}!</h2>
+            <h2>${this.title} Nrs. ${this.counter}!</h2>
             <button @click=${this.__increment}>increment</button>
         `;
     }
