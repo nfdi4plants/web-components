@@ -3,43 +3,42 @@
 <head>
     <script type="module">
         import '../dist/src/new-chapter.js';
-        import '../dist/src/option-description.js';
+        import '../dist/src/cli-option-description.js';
     </script>
     <link rel="stylesheet" href="component-styles.css">
 </head>
 <body>
     <new-chapter title="Options"></new-chapter>
-    <option-description></option-description>
-    <option-description
+    <cli-option-description
         option="--help"
         description="Help is help">
-    </option-description>
-    <option-description
+    </cli-option-description>
+    <cli-option-description
         option="--identifier"
         abbreviation="-i"
         description="A identifier or an accession number provided by a repository."
         isMandatory=true
         example="20211215_arcHACK">
-    </option-description>
-    <option-description
+    </cli-option-description>
+    <cli-option-description
         option="--title"
         description="A concise name given to the investigation."
         isMandatory=true
         example="Plant torturing with heat I">
-    </option-description>
-    <option-description
+    </cli-option-description>
+    <cli-option-description
         option="--description"
         description="A textual description of the investigation."
         example="Lorem ipsum">
-    </option-description>
-    <option-description
+    </cli-option-description>
+    <cli-option-description
         option="--submissionDate"
         description="The date on which the investigation was reported to the repository.">
-    </option-description>
-    <option-description
+    </cli-option-description>
+    <cli-option-description
         option="--publicReleaseDate"
         description="The date on which the investigation was released publicly.">
-    </option-description>
+    </cli-option-description>
 
 </body>
 </html>
