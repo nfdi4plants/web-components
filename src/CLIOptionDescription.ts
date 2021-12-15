@@ -10,8 +10,8 @@ export class CLIOptionDescription extends LitElement {
             padding-left: 25px;
         }
         dd {
+            font-family: var(--argument-description-font);
             color: var(--argument-description-color, black);
-            padding-left: 25px;
         }
         p {
             color: var(--argument-description-color, black);

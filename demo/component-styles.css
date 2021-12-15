@@ -4,7 +4,8 @@
   --text-color: black;
   --synopsis-background-color: #e8e7dd;
   --argument-color: #4e443c;
-  --argument-description-color: black;
+  --argument-description-color: #4e443c;
+  --argument-description-font: "Roboto Slab", "DejaVu Serif", "Georgia", "Times New Roman", sans-serif;
   --consolas: "Lucida Console", "Courier New", monospace;
   --argument-font: Courier, monospace;
 }
