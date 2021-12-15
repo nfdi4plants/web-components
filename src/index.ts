@@ -1,4 +1,3 @@
-export { TestComponent } from './TestComponent.js';
 export { CLISynopsis } from './CLISynopsis.js';
-export { OptionDescription } from './OptionDescription.js';
+export { CLIOptionDescription } from './CLIOptionDescription.js';
 export { NewChapter } from './NewChapter.js';

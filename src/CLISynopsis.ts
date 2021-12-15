@@ -46,9 +46,8 @@ export class CLISynopsis extends LitElement {
         return html`
             <h2>Synopsis</h2>
             <pre>
-            <b>${this.commandlinename}</b> ${this.text}
-            </pre
-            >
+<b>${this.commandlinename}</b> ${this.text}
+            </pre>
         `;
     }
 }

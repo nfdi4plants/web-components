@@ -1,3 +1,3 @@
-import { OptionDescription } from './OptionDescription.js';
+import { CLIOptionDescription } from './CLIOptionDescription.js';
 
-window.customElements.define('option-description', OptionDescription);
+window.customElements.define('option-description', CLIOptionDescription);

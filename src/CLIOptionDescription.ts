@@ -1,7 +1,7 @@
 import { html, css, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 
-export class OptionDescription extends LitElement {
+export class CLIOptionDescription extends LitElement {
     static styles = css`
         dt {
             font-family: var(--consolas);
