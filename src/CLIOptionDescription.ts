@@ -6,16 +6,15 @@ export class CLIOptionDescription extends LitElement {
         dt {
             font-family: var(--consolas);
             font-weight: bold;
-            color: var(--argument-color);
-            font-size: 14px;
+            color: var(--argument-color, black);
+            padding-left: 25px;
         }
         dd {
-            color: var(--argument-description-color);
-            font-size: 14px;
+            color: var(--argument-description-color, black);
+            padding-left: 25px;
         }
         p {
-            color: var(--argument-description-color);
-            font-size: 14px;
+            color: var(--argument-description-color, black);
             display: inline;
             color: var(--heading-color, black);
         }

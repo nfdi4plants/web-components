@@ -5,14 +5,13 @@ export class NewChapter extends LitElement {
     static styles = css`
         :host {
             display: block;
-            padding: 25px;
+            padding-left: 25px;
             color: var(--text-color, #000);
         }
         h2 {
             font-family: 'Roboto Slab', 'DejaVu Serif', Georgia,
                 'Times New Roman', sans-serif !important;
             margin-top: 20px;
-            font-size: 18px;
             font-weight: bold;
             line-height: 44px;
             color: var(--heading-color, black);
