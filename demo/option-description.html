@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+    <script type="module">
+        import '../dist/src/new-chapter.js';
+        import '../dist/src/option-description.js';
+    </script>
+    <link rel="stylesheet" href="component-styles.css">
+</head>
+<body>
+    <new-chapter title="Options"></new-chapter>
+
+    <option-description></option-description>
+    <option-description
+        option="--help"
+        description="Help is help">
+    </option-description>
+    <option-description
+        option="--identifier"
+        description="A identifier or an accession number provided by a repository."
+        isMandatory=true>
+    </option-description>
+    <option-description
+        option="--title"
+        description="A concise name given to the investigation.">
+    </option-description>
+    <option-description
+        option="--description"
+        description="A textual description of the investigation.">
+    </option-description>
+    <option-description
+        option="--submissionDate"
+        description="The date on which the investigation was reported to the repository.">
+    </option-description>
+    <option-description
+        option="--publicReleaseDate"
+        description="The date on which the investigation was released publicly.">
+    </option-description>
+
+</body>
+</html>

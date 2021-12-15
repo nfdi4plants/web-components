@@ -1,5 +1,9 @@
 
 :root {
   --heading-color: #f14e32;
-  --synopsis-background-color: #e8e7dd
+  --text-color: black;
+  --synopsis-background-color: #e8e7dd;
+  --argument-color: #4e443c;
+  --argument-description-color: black;
+  --consolas: "Lucida Console", "Courier New", monospace;
 }
