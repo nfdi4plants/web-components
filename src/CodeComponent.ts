@@ -31,10 +31,15 @@ export class CodeComponent extends LitElement {
             margin-bottom: 1em;
             overflow: auto;
             padding: 10px 15px 13px;
+            word-wrap: break-word;
+            overflow: auto;
+            white-space: pre;
+            white-space: pre-wrap;
         }
     `;
 
-    @property({ type: String }) codeLines = 'echo "Test"\nTest2';
+    @property({ type: String }) codeLines =
+        'echo "Test"\nTest2\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.';
 
     get splitedLines() {
         return this.codeLines
@@ -44,6 +49,11 @@ export class CodeComponent extends LitElement {
     }
 
     render() {
-        return html` <pre>${this.splitedLines}</pre> `;
+        return html`
+            <pre>
+${this.splitedLines}
+        </pre
+            >
+        `;
     }
 }
