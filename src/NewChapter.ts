@@ -25,7 +25,7 @@ export class NewChapter extends LitElement {
 
     render() {
         return html`
-            <h2>${this.title.toUpperCase()}</h2>
+            <h2>${this.title}</h2>
             <p>${this.text}</p>
         `;
     }
