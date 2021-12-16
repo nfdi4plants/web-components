@@ -23,7 +23,7 @@ export class CodeComponent extends LitElement {
             font-size: 1em;
             background-color: #fff;
             border: solid 1px #efeee6;
-            border-radius: 3px;
+            bort
             color: #f14e32;
             display: block;
             font-family: Courier, monospace;
