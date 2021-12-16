@@ -17,16 +17,26 @@ export class NewChapter extends LitElement {
             color: var(--heading-color, black);
             text-rendering: optimizelegibility;
         }
+        code {
+            background-color: var(--code-background-color, #fff);
+            border: solid 1px #efeee6;
+            border-radius: 3px;
+            color: var(--code-color, #f14e32);
+            display: inline;
+            font-family: var(--code-font, (Courier, monospace));
+            word-wrap: break-word;
+            overflow: auto;
+            white-space: pre;
+            white-space: pre-wrap;
+        }
     `;
 
     @property({ type: String }) title = 'Heading';
 
-    @property({ type: String }) text = '';
-
     render() {
         return html`
             <h2>${this.title}</h2>
-            <p>${this.text}</p>
+            ${this.children}
         `;
     }
 }

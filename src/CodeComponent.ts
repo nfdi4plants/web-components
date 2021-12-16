@@ -5,17 +5,8 @@ export class CodeComponent extends LitElement {
     static styles = css`
         :host {
             display: block;
-            padding: 25px;
+            padding: 0px 25px 0px 25px;
             color: var(--test-component-text-color, #000);
-        }
-
-        .colnum {
-            -webkit-text-size-adjust: 100%;
-            font-size: 1em;
-            color: #f14e32;
-            font-family: Courier, monospace;
-            line-height: 18px;
-            font-weight: bold;
         }
         pre {
             padding: 1em;
@@ -50,10 +41,8 @@ export class CodeComponent extends LitElement {
 
     render() {
         return html`
-            <pre>
-${this.splitedLines}
-        </pre
-            >
+            <pre>${this.splitedLines}</pre>
+            ${this.children}
         `;
     }
 }

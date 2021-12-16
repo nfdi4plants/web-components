@@ -8,4 +8,7 @@
   --argument-description-font: "Roboto Slab", "DejaVu Serif", "Georgia", "Times New Roman", sans-serif;
   --consolas: "Lucida Console", "Courier New", monospace;
   --argument-font: Courier, monospace;
+  --code-background-color: #fff;
+  --code-color: #f14e32;
+  --code-font: Courier, monospace;
 }

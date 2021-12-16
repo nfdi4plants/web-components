@@ -13,91 +13,78 @@
 
     <h1>CLI documentation components in action:</h1>
 
-    <new-chapter title="NAME" text="<code>arc i person register</code>"></new-chapter>
+    <new-chapter title="NAME" [innerHtml]="textString" text="<code>arc i person register</code>"></new-chapter>
 
     <new-chapter title="SYNOPSIS">"></new-chapter>
 
     <cli-synopsis
-        commandlinename="arc i persion register"
-        text="[--help] [-l | --lastname] [-f | --firstname]
+        commandlinename="arc i person register"
+        commandlinearguments="[--help] [-l | --lastname] [-f | --firstname]
                     [--midInitials] [--email] [--phone] [--fax]
                     [--address] [--affiliation] [--roles]
                     [--RolesTermAccessionNumber] [--RolesTermSourceREF]">
     </cli-synopsis>
 
-    <new-chapter title="DESCRIPTION"></new-chapter>
-
-
-    Every person, that is involved in the investigation can be registered with personal information using <code>arc i person register</code>.
-
+    <new-chapter title="DESCRIPTION">
+        <p>Every person, that is involved in the investigation can be registered with personal information using <code>arc i person register</code>. </p>
+    </new-chapter>
 
     <new-chapter title="OPTIONS"></new-chapter>
 
     <cli-option-description
-        option="--help"
-        description="Lists these option descriptions.">
+        option="--help">
+        <p>Lists these option descriptions.</p>
     </cli-option-description>
     <cli-option-description
         option="--lastname"
         abbreviation="-l"
-        description="The last name of a person associated with the investigation."
         isMandatory=true
-        example="Doe">
+        example="Doe"><p>The last name of a person associated with the investigation.</p>
     </cli-option-description>
     <cli-option-description
         option="--firstname"
         abbreviation="-f"
-        description="The first name of a person associated with the investigation."
         isMandatory=true
-        example="John">
+        example="John">The first name of a person associated with the investigation.
     </cli-option-description>
     <cli-option-description
         option="--midInitials"
-        description="The middle initials of a person associated with the investigation."
-        example="P">
+        example="P">The middle initials of a person associated with the investigation.</p>
     </cli-option-description>
     <cli-option-description
         option="--email"
-        description="The email address of a person associated with the investigation."
-        example="jpdoe@mymail.com">
+        example="jpdoe@mymail.com"><p>The email address of a person associated with the investigation.</p>
     </cli-option-description>
     <cli-option-description
         option="--phone"
-        description="The telephone number of a person associated with the investigation."
-        example="&quot;+49(0)631 205 3045&quot;">
+        example='"+49(0)631 205 3045"'><p>The telephone number of a person associated with the investigation.</p>
     </cli-option-description>
     <cli-option-description
-        option="--fax"
-        description="The fax number of a person associated with the investigation.">
+        option="--fax"><p>The fax number of a person associated with the investigation.</p>
     </cli-option-description>
     <cli-option-description
         option="--address"
-        description="The address of a person associated with the investigation."
-        example="&quot;Paul Ehrlich Straße 23, 67663 Kaiserslautern, Germany&quot;">
+        example='"Paul Ehrlich Straße 23, 67663 Kaiserslautern, Germany"'><p>The address of a person associated with the investigation.</p>
     </cli-option-description>
     <cli-option-description
-        option="--affiliation"
-        description="The organization affiliation for a person associated with the investigation.">
+        option="--affiliation"><p>The organization affiliation for a person associated with the investigation.</p>
     </cli-option-description>
     <cli-option-description
         option="--roles"
-        description="Term to classify the role(s) performed by this person in the context of the investigation, which means that the roles reported here need not correspond to roles held withing their affiliated organization. Multiple annotations or values attached to one person can be provided by using a semicolon (“;”) Unicode (U0003+B) as a separator (e.g.: submitter;funder;sponsor). The term can be free text or from, for example, a controlled vocabulary or an ontology. If the latter source is used the Term Accession Number and Term Source REF fields below are required."
-        example="supervisor">
+        example="supervisor"><p>Term to classify the role(s) performed by this person in the context of the investigation, which means that the roles reported here need not correspond to roles held withing their affiliated organization. Multiple annotations or values attached to one person can be provided by using a semicolon (“;”) Unicode (U0003+B) as a separator (e.g.: submitter;funder;sponsor). The term can be free text or from, for example, a controlled vocabulary or an ontology. If the latter source is used the Term Accession Number and Term Source REF fields below are required.</p>
     </cli-option-description>
     <cli-option-description
-        option="--RolesTermAccessionNumber"
-        description="The accession number from the Term Source associated with the selected term.">
+        option="--RolesTermAccessionNumber"><p>The accession number from the Term Source associated with the selected term.</p>
     </cli-option-description>
     <cli-option-description
-        option="--RolesTermSourceREF"
-        description="Identifies the controlled vocabulary or ontology that this term comes from. The Source REF has to match one of the Term Source Names declared in the Ontology Source Reference section. RolesTermSourceREF: sparontologies.github.io/scoro/current/scoro.xml">
+        option="--RolesTermSourceREF"><p>Identifies the controlled vocabulary or ontology that this term comes from. The Source REF has to match one of the Term Source Names declared in the Ontology Source Reference section. <a href="sparontologies.github.io/scoro/current/scoro.xml"> RolesTermSourceREF</a></p>
     </cli-option-description>
 
 
     <new-chapter title="EXAMPLES"></new-chapter>
 
-    <code-component codeLines="Sachen
-Sachen"></code-component>
+    <code-component codeLines='arc i person register -l Doe -f John -m P --email jpdoe@mail.com --phone "+49(0)631 205 3045" --address "Paul-Ehrlich-Straße 23, 67663 Kaiserslautern" --affiliation "Department of M21 Measurements, Technische Universität Kaiserslautern, Germany" --roles "supervisor"'></code-component>
+    
 
 </body>
 </html>
