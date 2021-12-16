@@ -1,16 +1,22 @@
 {
-  "name": "test-component",
+  "name": "@nfdi4plants/web-components",
   "description": "Webcomponent test-component following open-wc recommendations",
   "license": "MIT",
-  "author": "test-component",
+  "author": {
+    "name" : "DataPLANT",
+    "email" : "dataplant@nfdi4plants.org",
+    "url" : "https://nfdi4plants.de/"
+  },
+  "contributors": [
+      "Benedikt Venn",
+      "Bianca Frommer",
+      "Kevin Schneider"
+  ],
   "version": "0.0.0",
   "main": "dist/src/index.js",
   "module": "dist/src/index.js",
   "exports": {
-    ".": "./dist/src/index.js",
-    "./cli-synopsis.js": "./dist/src/cli-synopsis.js",
-    "./new-chapter.js": "./dist/src/test-component.js",
-    "./cli-option-description.js": "./dist/src/test-component.js"
+    ".": "./dist/src/index.js"
   },
   "scripts": {
     "analyze": "cem analyze --litelement",
