@@ -5,7 +5,7 @@ export class CLISynopsis extends LitElement {
     static styles = css`
         :host {
             display: block;
-            padding: 25px;
+            padding: 0px 25px 0px 25px;
             color: var(--test-component-text-color, #000);
         }
         pre {
@@ -28,11 +28,13 @@ export class CLISynopsis extends LitElement {
         }
     `;
 
-    @property({ type: String }) text = 'Hey there';
+    @property({ type: String }) commandlinearguments = 'Hey there';
 
     @property({ type: String }) commandlinename = 'Hey there';
 
     render() {
-        return html` <pre><b>${this.commandlinename}</b> ${this.text}</pre> `;
+        return html` <pre><b>${this.commandlinename}</b> ${this
+                .commandlinearguments}</pre>
+            ${this.children}`;
     }
 }
