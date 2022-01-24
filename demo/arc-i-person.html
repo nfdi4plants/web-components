@@ -2,10 +2,10 @@
 <html lang="en-GB">
 <head>
     <script type="module">
-        import '../dist/src/new-chapter.js';
-        import '../dist/src/cli-option-description.js';
-        import '../dist/src/cli-synopsis.js';
-        import '../dist/src/code-component.js';
+        import '../dist/src/misc-components/new-chapter.js';
+        import '../dist/src/cli-documentation-components/cli-option-description.js';
+        import '../dist/src/cli-documentation-components/cli-synopsis.js';
+        import '../dist/src/misc-components/code-component.js';
     </script>
     <link rel="stylesheet" href="component-styles.css">
 </head>
@@ -49,7 +49,7 @@
     <cli-option-description
         option="--unregister <args>"><p>A person is removed from an investigation. If no further arguments are provided an editor pop up will request the required information.</p>
     </cli-option-description>
-    
+
 
 
     <new-chapter title="EXAMPLES"></new-chapter>
@@ -64,7 +64,7 @@ arc i person edit -l Doe -f John
 arc i person update -l Doe -f John --email jDoe@mail.com
 arc i person unregister
 arc i person unregister -l Doe -f John'></code-component>
-    
+
 
 </body>
 </html>
