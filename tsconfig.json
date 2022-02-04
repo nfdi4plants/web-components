@@ -1,21 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es2018",
     "module": "esnext",
-    "moduleResolution": "node",
-    "noEmitOnError": true,
-    "lib": ["es2017", "dom"],
+    "lib": ["es2017", "dom", "dom.iterable"],
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./types",
+    "rootDir": "./src",
     "strict": true,
-    "esModuleInterop": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "importHelpers": true,
-    "outDir": "dist",
-    "sourceMap": true,
-    "inlineSources": true,
-    "rootDir": "./",
-    "declaration": true,
-    "incremental": true
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": false
   },
-  "include": ["**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": []
 }
