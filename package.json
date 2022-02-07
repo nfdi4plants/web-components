@@ -1,6 +1,19 @@
 {
-  "name": "nfdi-web-components",
-  "version": "0.0.0",
+  "name": "@nfdi4plants/web-components",
+  "description": "Webcomponent test-component following open-wc recommendations",
+  "license": "MIT",
+  "author": {
+    "name" : "DataPLANT",
+    "email" : "dataplant@nfdi4plants.org",
+    "url" : "https://nfdi4plants.de/"
+  },
+  "contributors": [
+    "Benedikt Venn",
+    "Bianca Frommer",
+    "Kevin Schneider",
+    "Kevin Frey"
+],
+  "version": "0.0.0-alpha",
   "main": "dist/my-element.es.js",
   "exports": {
     ".": "./dist/my-element.es.js"
