@@ -97,3 +97,9 @@ export class Navbar extends LitElement {
     // this.requestUpdate()
   }
 }
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'nfdi-navbar': Navbar
+  }
+}
