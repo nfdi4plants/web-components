@@ -13,12 +13,12 @@
     "Kevin Schneider",
     "Kevin Frey"
 ],
-  "version": "0.0.0-alpha",
-  "main": "dist/my-element.es.js",
+  "version": "0.0.2-alpha",
+  "main": "dist/web-components.es.js",
   "exports": {
-    ".": "./dist/my-element.es.js"
+    ".": "./dist/web-components.es.js"
   },
-  "types": "types/my-element.d.ts",
+  "types": "types/index.d.ts",
   "files": [
     "dist",
     "types"
