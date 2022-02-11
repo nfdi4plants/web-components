@@ -14,7 +14,8 @@ export class Navbar extends LitElement {
     bulmaStyles,
     css`
       :host {
-        position: fixed
+        position: fixed;
+        z-index: 30
       }
 
       .icon {
