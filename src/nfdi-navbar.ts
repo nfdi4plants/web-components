@@ -13,6 +13,10 @@ export class Navbar extends LitElement {
   static styles = [
     bulmaStyles,
     css`
+      :host {
+        position: fixed
+      }
+
       .icon {
         width: 1em;
         height: 1em;
@@ -20,12 +24,15 @@ export class Navbar extends LitElement {
     }`
   ] 
   
-  @property()
+  @property({type: Boolean})
   navbarIsActive = false;
 
-  // https://stackoverflow.com/a/4504739/12858021
+  // // https://stackoverflow.com/a/4504739/12858021
+  // @property()
+  // path = window.location.pathname+window.location.search
+
   @property()
-  path = window.location.pathname+window.location.search
+  url = window.location.href
 
   render() {
     return html`
@@ -42,22 +49,22 @@ export class Navbar extends LitElement {
         </div>
         <div id="navMenu" class=${this.navbarIsActive ? 'navbar-menu has-bg-darkblue is-active' : 'navbar-menu has-bg-darkblue'}>
           <div class="navbar-start is-justify-content-center is-flex-grow-1">
-            <a class=${this.path == "/" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="/">
+            <a class=${this.url == "https://nfdi4plants.org" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="https://nfdi4plants.org">
               Home
             </a>
-            <a class=${this.path == "/news.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="/news.html">
+            <a class=${this.url == "https://nfdi4plants.org/news.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="https://nfdi4plants.org/news.html">
               News
             </a>
-            <a class=${this.path == "/content/service.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="/content/service.html">
+            <a class=${this.url == "https://nfdi4plants.org/content/service.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="https://nfdi4plants.org/content/service.html">
               Service
             </a>
-            <a class=${this.path == "/content/about.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="/content/about.html">
+            <a class=${this.url == "https://nfdi4plants.org/content/about.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="https://nfdi4plants.org/content/about.html">
               About
             </a>
-            <a class=${this.path == "/content/jobs.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="/content/jobs.html">
+            <a class=${this.url == "https://nfdi4plants.org/content/jobs.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="https://nfdi4plants.org/content/jobs.html">
               Jobs
             </a>
-            <a class=${this.path == "https://gitlab.nfdi4plants.de/" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="https://gitlab.nfdi4plants.de/">
+            <a class=${this.url == "https://gitlab.nfdi4plants.de/" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="https://gitlab.nfdi4plants.de/">
               DataHUB
             </a>
           </div>

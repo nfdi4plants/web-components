@@ -9,6 +9,7 @@ export default defineConfig({
     },
     rollupOptions: {
       external: /^lit/
-    }
+    },
+    sourcemap: 'inline'
   }
 })

@@ -15,7 +15,12 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    // // The next 2 below are a workaround for: https://github.com/typestack/class-transformer/issues/472
+    // // https://github.com/apollographql/graphql-tag/pull/403
+    // // Failed to parse source map from '.map' file: Error: ENOENT: no such file or directory, open '.map' file
+    "sourceMap": true,
+    "inlineSources": true
   },
   "include": ["src/**/*.ts"],
   "exclude": []
