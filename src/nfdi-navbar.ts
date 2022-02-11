@@ -1,7 +1,7 @@
 import { html, css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { bulmaStyles } from './bulma-css'
-
+import {mainPageBaseUrl} from './params'
 
 /**
  * This element needs html {'padding-top: 3.25rem;'} for the source html.
@@ -49,19 +49,19 @@ export class Navbar extends LitElement {
         </div>
         <div id="navMenu" class=${this.navbarIsActive ? 'navbar-menu has-bg-darkblue is-active' : 'navbar-menu has-bg-darkblue'}>
           <div class="navbar-start is-justify-content-center is-flex-grow-1">
-            <a class=${this.url == "https://nfdi4plants.org" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="https://nfdi4plants.org">
+            <a class=${this.url == mainPageBaseUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}">
               Home
             </a>
-            <a class=${this.url == "https://nfdi4plants.org/news.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="https://nfdi4plants.org/news.html">
+            <a class=${this.url == "${mainPageBaseUrl}/news.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}/news.html">
               News
             </a>
-            <a class=${this.url == "https://nfdi4plants.org/content/service.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="https://nfdi4plants.org/content/service.html">
+            <a class=${this.url == "${mainPageBaseUrl}/content/service.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}/content/service.html">
               Service
             </a>
-            <a class=${this.url == "https://nfdi4plants.org/content/about.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="https://nfdi4plants.org/content/about.html">
+            <a class=${this.url == "${mainPageBaseUrl}/content/about.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}/content/about.html">
               About
             </a>
-            <a class=${this.url == "https://nfdi4plants.org/content/jobs.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="https://nfdi4plants.org/content/jobs.html">
+            <a class=${this.url == "${mainPageBaseUrl}/content/jobs.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}/content/jobs.html">
               Jobs
             </a>
             <a class=${this.url == "https://gitlab.nfdi4plants.de/" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="https://gitlab.nfdi4plants.de/">
