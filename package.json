@@ -13,7 +13,7 @@
     "Kevin Schneider",
     "Kevin Frey"
 ],
-  "version": "0.0.2-alpha07",
+  "version": "0.0.3",
   "main": "dist/web-components.es.js",
   "exports": {
     ".": "./dist/web-components.es.js"
