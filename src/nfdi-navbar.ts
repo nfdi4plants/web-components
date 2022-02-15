@@ -39,7 +39,7 @@ export class Navbar extends LitElement {
     return html`
       <nav class="navbar is-fixed-top has-bg-darkblue">
         <div class="navbar-brand">
-          <a class="navbar-item" href="/">
+          <a class="navbar-item" href="${mainPageBaseUrl}">
             <img src="https://nfdi4plants.org/images/logo.svg" alt="Logo" width="32" height="32">
           </a>
           <div class=${this.navbarIsActive ? 'navbar-burger is-active' : 'navbar-burger'} data-target="navMenu" aria-label="menu" role="button" aria-expanded="false" @click=${this._toggleNavbar}>
