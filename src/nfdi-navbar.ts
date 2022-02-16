@@ -1,7 +1,7 @@
 import { html, css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { bulmaStyles } from './bulma-css'
-import {mainPageBaseUrl} from './params'
+import {mainPageBaseUrl, gitlabBaseUrl} from './params'
 
 /**
  * This element needs html {'padding-top: 3.25rem;'} for the source html.
@@ -65,7 +65,7 @@ export class Navbar extends LitElement {
             <a class=${this.url == "${mainPageBaseUrl}/content/jobs.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}/content/jobs.html">
               Jobs
             </a>
-            <a class=${this.url == "https://gitlab.nfdi4plants.de/" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="https://gitlab.nfdi4plants.de/">
+            <a class=${this.url == gitlabBaseUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${gitlabBaseUrl}">
               DataHUB
             </a>
           </div>

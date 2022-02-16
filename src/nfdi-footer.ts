@@ -1,7 +1,7 @@
 import { html, css, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { bulmaStyles } from './bulma-css'
-import { mainPageBaseUrl } from './params'
+import { mainPageBaseUrl, gitlabBaseUrl } from './params'
 
 /**
  * This element needs html {'padding-top: 3.25rem;'} for the source html.
@@ -90,7 +90,7 @@ export class Footer extends LitElement {
                         </div>
                         <div class="block">
                         <li>
-                            <a href="https://gitlab.nfdi4plants.de/">
+                            <a href="${gitlabBaseUrl}">
                             DataHUB
                             </a>
                         </li>
