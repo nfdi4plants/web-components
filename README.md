@@ -1,48 +1,23 @@
-# \<test-component>
-
-This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
-
-## Installation
+## run locally
 
 ```bash
-npm i test-component
+npm run dev
 ```
 
-## Usage
-
-```html
-<script type="module">
-  import 'test-component/test-component.js';
-</script>
-
-<test-component></test-component>
-```
-
-## Linting and formatting
-
-To scan the project for linting and formatting errors, run
+## build
 
 ```bash
-npm run lint
+npm run build
 ```
 
-To automatically fix linting and formatting errors, run
+## publish to npm 
+
+Increase version in `package.json`
 
 ```bash
-npm run format
+npm publish --dry-run
 ```
-
-
-## Tooling configs
-
-For most of the tools, the configuration is in the `package.json` to reduce the amount of files in your project.
-
-If you customize the configuration a lot, you can consider moving them to individual files.
-
-## Local Demo with `web-dev-server`
 
 ```bash
-npm start
+npm publish
 ```
-
-To run a local development server that serves the basic demo located in `demo/index.html`

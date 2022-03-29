@@ -1,21 +1,27 @@
 {
   "compilerOptions": {
-    "target": "es2018",
     "module": "esnext",
-    "moduleResolution": "node",
-    "noEmitOnError": true,
-    "lib": ["es2017", "dom"],
+    "lib": ["es2017", "dom", "dom.iterable"],
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./types",
+    "rootDir": "./src",
     "strict": true,
-    "esModuleInterop": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "importHelpers": true,
-    "outDir": "dist",
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": false,
+    // // The next 2 below are a workaround for: https://github.com/typestack/class-transformer/issues/472
+    // // https://github.com/apollographql/graphql-tag/pull/403
+    // // Failed to parse source map from '.map' file: Error: ENOENT: no such file or directory, open '.map' file
     "sourceMap": true,
-    "inlineSources": true,
-    "rootDir": "./",
-    "declaration": true,
-    "incremental": true
+    "inlineSources": true
   },
-  "include": ["**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": []
 }
