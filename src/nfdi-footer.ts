@@ -45,6 +45,21 @@ export class Footer extends LitElement {
                         This website is developed and maintained by members of DataPLANT
                         </p>
                     </div>
+                    <div class="block">
+                        <h3 class="subtitle is-white">
+                        Legal
+                        </h3>
+                    </div>
+                    <div class="block">
+                        <a href="${mainPageBaseUrl}/content/imprint.html">
+                        Imprint
+                        </a>
+                    </div>
+                    <div class="block">
+                        <a href="${mainPageBaseUrl}/content/privacy.html">
+                        Privacy
+                        </a>
+                    </div>
                     </div>
                     <div class="column is-4 m-4">
                     <div class="block">
@@ -100,6 +115,27 @@ export class Footer extends LitElement {
                     <div class="column is-4 m-4">
                     <div class="block">
                         <h3 class="subtitle is-white">
+                        Help
+                        </h3>
+                    </div>
+                    <div class="block">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" focusable="false" viewBox="0 0 512 512" >
+                            <path fill="currentColor" d="M191.1 224c0-17.72-14.34-32.04-32-32.04L144 192c-35.34 0-64 28.66-64 64.08v47.79C80 339.3 108.7 368 144 368H160c17.66 0 32-14.36 32-32.06L191.1 224zM256 0C112.9 0 4.583 119.1 .0208 256L0 296C0 309.3 10.75 320 23.1 320S48 309.3 48 296V256c0-114.7 93.34-207.8 208-207.8C370.7 48.2 464 141.3 464 256v144c0 22.09-17.91 40-40 40h-110.7C305 425.7 289.7 416 272 416H241.8c-23.21 0-44.5 15.69-48.87 38.49C187 485.2 210.4 512 239.1 512H272c17.72 0 33.03-9.711 41.34-24H424c48.6 0 88-39.4 88-88V256C507.4 119.1 399.1 0 256 0zM368 368c35.34 0 64-28.7 64-64.13V256.1C432 220.7 403.3 192 368 192l-16 0c-17.66 0-32 14.34-32 32.04L320 335.9C320 353.7 334.3 368 352 368H368z"/>
+                        </svg>
+                        <a href="https://helpdesk.nfdi4plants.org/">
+                        DataPLANT Helpdesk
+                        </a>
+                    </div>
+                    <div class="block">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" focusable="false" viewBox="0 0 512 512" >
+                            <path fill="currentColor" d="M464 64C490.5 64 512 85.49 512 112C512 127.1 504.9 141.3 492.8 150.4L275.2 313.6C263.8 322.1 248.2 322.1 236.8 313.6L19.2 150.4C7.113 141.3 0 127.1 0 112C0 85.49 21.49 64 48 64H464zM217.6 339.2C240.4 356.3 271.6 356.3 294.4 339.2L512 176V384C512 419.3 483.3 448 448 448H64C28.65 448 0 419.3 0 384V176L217.6 339.2z"/></svg>
+                        </svg>
+                        <a href="mailto:info@nfdi4plants.org">
+                        DataPLANT Info Point
+                        </a>
+                    </div>
+                    <div class="block">
+                        <h3 class="subtitle is-white">
                         Social
                         </h3>
                     </div>
@@ -125,21 +161,6 @@ export class Footer extends LitElement {
                         </svg>
                         <a href="https://www.youtube.com/channel/UCrTBwQWOa0-aWYkwoY104Wg">
                         DataPLANT video resources on youtube
-                        </a>
-                    </div>
-                    <div class="block">
-                        <h3 class="subtitle is-white">
-                        Legal
-                        </h3>
-                    </div>
-                    <div class="block">
-                        <a href="${mainPageBaseUrl}/content/imprint.html">
-                        Imprint
-                        </a>
-                    </div>
-                    <div class="block">
-                        <a href="${mainPageBaseUrl}/content/privacy.html">
-                        Privacy
                         </a>
                     </div>
                     </div>
