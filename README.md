@@ -29,3 +29,13 @@ npm publish --dry-run
 ```bash
 npm publish
 ```
+
+## List of projects using these web-components
+
+- [nfdi-homepage](https://github.com/nfdi4plants/nfdi4plants.github.io)
+- [nfdi-helpdesk](https://github.com/Freymaurer/nfdi-helpdesk)
+- dataplant-registration-frontend
+
+### Update web-components in these projects
+
+```npm install @nfdi4plants/web-components@{newMajor}.{newMinor}.{newPatch}```
