@@ -1,34 +1,8 @@
-## set up
+# nfdi4/plants/web-components
 
-Pull repository and navigate to root folder.
+## NPM
 
-```bash
-npm install
-```
-
-## run locally
-
-```bash
-npm run dev
-```
-
-## build
-
-```bash
-npm run build
-```
-
-## publish to npm 
-
-Increase version in `package.json`.
-
-```bash
-npm publish --dry-run
-```
-
-```bash
-npm publish
-```
+You can see the latest package version [here](https://www.npmjs.com/package/@nfdi4plants/web-components)
 
 ## List of projects using these web-components
 
@@ -98,3 +72,37 @@ For projects without bundling, you can use  [rollup](https://rollupjs.org/guide/
 ### Examples
 
 **1. Fable/SAFE:** [nfdi-helpdesk](https://github.com/Freymaurer/nfdi-helpdesk/blob/main/src/Client/nfdi-webcomponents.fs)
+
+# Development
+
+## Set up
+
+Pull repository and navigate to root folder.
+
+```bash
+npm install
+```
+
+## run locally
+
+```bash
+npm run dev
+```
+
+## build
+
+```bash
+npm run build
+```
+
+## publish to npm 
+
+Increase version in `package.json`.
+
+```bash
+npm publish --dry-run
+```
+
+```bash
+npm publish
+```
