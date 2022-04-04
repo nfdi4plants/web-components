@@ -1,4 +1,4 @@
-# nfdi4/plants/web-components
+# nfdi4plants/web-components
 
 ## NPM
 
