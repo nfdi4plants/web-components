@@ -8,6 +8,13 @@ export class Content extends LitElement {
     static styles = [
         bulmaStyles,
         css`
+            ::slotted(p) {
+                text-align: justify;
+            }
+
+            ::slotted(blockquote) {
+                text-align: justify;
+            }
         `
       ] 
 

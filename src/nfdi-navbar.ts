@@ -138,7 +138,6 @@ export class Navbar extends LitElement {
 
   private _toggleNavbar() {
     this.navbarIsActive = !this.navbarIsActive
-    // this.requestUpdate()
   }
 }
 
