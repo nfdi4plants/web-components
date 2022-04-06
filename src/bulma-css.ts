@@ -2013,7 +2013,7 @@ h6 {
   padding: 0;
 }
 
-h1,
+/* h1,
 h2,
 h3,
 h4,
@@ -2025,7 +2025,7 @@ h6 {
 
 ul {
   list-style: none;
-}
+} */
 
 button,
 input,

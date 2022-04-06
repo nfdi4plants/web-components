@@ -13,6 +13,11 @@ export class Footer extends LitElement {
     static styles = [
         bulmaStyles,
         css`
+            :host{
+                display: block;
+                clear: both;
+            }
+            
             .icon {
                 width: 1em;
                 height: 1em;
