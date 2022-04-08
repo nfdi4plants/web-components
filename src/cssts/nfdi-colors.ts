@@ -1,0 +1,14 @@
+import {css} from 'lit';
+
+// https://github.com/nfdi4plants/Branding#tldr
+export const nfdiMint = css`#1FC2A7`
+export const nfdiMintDarker20 = css`#199b86`
+
+export const nfdiLightblue = css`##4FB3D9`
+export const nfdiDarkblue = css`#2D3E50`
+export const nfdiYellow = css`#FFC000`
+
+export const nfdiOlive = css`#B4CE82`
+export const nfdiOliveLighter80 = css`#f0f5e6`
+
+export const nfdiRed = css`#C21F3A`

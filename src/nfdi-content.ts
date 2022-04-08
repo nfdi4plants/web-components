@@ -1,6 +1,6 @@
 import { html, css, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
-import { bulmaStyles } from './bulma-css'
+import { bulmaStyles } from './cssts/bulma-css'
 
 @customElement('nfdi-content')
 export class Content extends LitElement {
@@ -15,16 +15,16 @@ export class Content extends LitElement {
             ::slotted(blockquote) {
                 text-align: justify;
             }
+
+            .box {
+                padding: 1.25rem 2rem;
+            }
         `
       ] 
 
     render() {
         return html`
-            <div class="box">
-                <div>
-                    <slot></slot>
-                </div>
-            </div>
+            <div class="box"><slot></slot></div>
         `
     }
 }

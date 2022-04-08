@@ -1,6 +1,6 @@
 import { html, css, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
-import { bulmaStyles } from './bulma-css'
+import { bulmaStyles } from './cssts/bulma-css'
 import { mainPageBaseUrl, gitlabBaseUrl } from './params'
 
 /**

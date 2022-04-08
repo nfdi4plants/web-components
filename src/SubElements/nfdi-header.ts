@@ -1,21 +1,21 @@
 import { css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 // import { ifDefined } from 'lit/directives/if-defined.js';
-import { bulmaStyles } from '../bulma-css'
+import { bulmaStyles } from '../cssts/bulma-css'
 // import { nfdiBrandingStyles } from '../nfdi-branding-css'
 import { unsafeStatic, html } from 'lit/static-html.js';
 
 const headerstyles = css`
 
     :host {
-        scroll-margin-top: 70px
+        scroll-margin-top: 110px
     }
 
     h1,h2,h3,h4,h5,h6 {
         display: block; 
         width: 100%;
         line-height: 1.2;
-        margin-bottom: 0.5rem
+        padding: 0.5rem 0rem 0.75rem;
     }
 
     h1:hover .anchor, h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover .anchor {

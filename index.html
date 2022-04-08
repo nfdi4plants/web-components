@@ -22,18 +22,33 @@
       <!-- content -->
       <nfdi-h1>Metadata</nfdi-h1>
       <!-- TOC -->
-      <ol>
+      <nfdi-toc></nfdi-toc>
+      <!-- <ol>
         <li><a href="#what-is-metadata">What is metadata?</a></li>
         <li><a href="#where-does-metadata-come-from">Where does metadata come from?</a></li>
         <li><a href="#why-do-i-benefit-from-metadata">Why do I benefit from metadata?</a></li>
         <li><a href="#what-tasks-are-important-for-rich-metadata">What tasks are important for rich metadata?</a></li>
         <li><a href="#how-does-dataplant-support-me-in-metadata-annotation">How does DataPLANT support me in metadata annotation?</a></li>  
-      </ol>
+      </ol> -->
       <!-- /TOC -->
-      <nfdi-h2 id="what-is-metadata-">
-        What is metadata?
-      </nfdi-h2>
-      <p>Metadata is &quot;data that provides information about other data&quot;<a href="https://www.merriam-webster.com/dictionary/metadata" title="Merriam Webster definition of metadata">^1</a>. In order to put some (plant) life into this web dictionary explanation, let us explore metadata with a plant biology example:</p>
+      <nfdi-h2>What is metadata?</nfdi-h2>
+      <nfdi-code>#r "nuget: DynamicObj, 1.0.1"
+#r "nuget: Expecto, 9.0.4"
+
+open DynamicObj
+open Newtonsoft.Json
+open System.IO
+open Microsoft.FSharp.Core
+
+type JsonParser = {
+    TokenType: JsonToken
+    Value: string option
+} with
+    static member create tokenType value = {
+        TokenType = tokenType
+        Value = value
+    }</nfdi-code>
+      <p>Metadata is &quot;data that provides information about other data&quot;<sup><a href="https://www.merriam-webster.com/dictionary/metadata" title="Merriam Webster definition of metadata">1</a></sup>. In order to put some (plant) life into this web dictionary explanation, let us explore metadata with a plant biology example:</p>
       <blockquote>
       Viola investigates the effect of the plant circadian clock on sugar metabolism in <em>W. mirabilis</em>. For her PhD project, which is part of an EU-funded consortium in Prof. Beetroot&#39;s lab, she acquires seeds from a South-African botanical society. Viola grows the plants under different light regimes, harvests leaves from a two-day time series experiment, extracts polar metabolites as well as RNA and submits the samples to nearby core facilities for metabolomics and transcriptomics measurements, respectively. After a few weeks of iterative consultation with the facilities&#39; heads as well as technicians and computational biologists involved, Viola receives back a wealth of raw and processed data. From the data she produces figures and wraps everything up to publish the results in the <em>Journal of Wonderful Plant Sciences</em>.
       </blockquote>
@@ -78,7 +93,7 @@
       During project lifetime data and metadata continuously develops and requires adaptations and updates. Proper versioning helps to keep an overview of the different stakeholders and tasks acting on metadata. Easy and traceable documentation of these processes can be achieved with general-purpose version control through [git][git].
       As data and metadata develops the need to harmonize between metadata outputs may occur. If metadata is properly collected in a schema, converters can help to migrate between different metadata schema or securely export information from one schema to the other.</p>
       <div style="page-break-after: always;"></div>
-      
+      <nfdi-h1>Testing</nfdi-h1>
       <nfdi-h2 id="how-does-dataplant-support-me-in-metadata-annotation-">How does DataPLANT support me in metadata annotation?</nfdi-h2>
       <p>The following table gives an overview about DataPLANT tools and services related to metadata. Follow the link in the first column for details.</p>
       <table>

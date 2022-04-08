@@ -1,7 +1,8 @@
 import { html, css, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
-import { bulmaStyles } from './bulma-css'
-import { nfdiBrandingStyles } from './nfdi-branding-css'
+import { bulmaStyles } from './cssts/bulma-css'
+// import { nfdiBrandingStyles } from './nfdi-branding-css'
+import { nfdiOliveLighter80 } from './cssts/nfdi-colors'
 
 
 // https://stackoverflow.com/questions/61626493/slotted-css-selector-for-nested-children-in-shadowdom-slot
@@ -12,7 +13,7 @@ export class Body extends LitElement {
         bulmaStyles,
         css`
             .mbody {
-                background-color: #f0f5e6;
+                background-color: ${nfdiOliveLighter80};
                 padding: 2rem;
             }
         `
@@ -29,7 +30,7 @@ export class Body extends LitElement {
                             </nfdi-sidebar>
 
                         </div>
-                        <div class="column">
+                        <div class="column" style="padding-left: 0px; padding-right: 0px">
                             <nfdi-content>  
                                 <slot></slot>
                             </nfdi-content>
