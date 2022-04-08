@@ -24,7 +24,7 @@ export class Navbar extends LitElement {
         height: 1em;
         vertical-align: -.125em;
     }`
-  ] 
+  ]
   
   @property({type: Boolean})
   navbarIsActive = false;
