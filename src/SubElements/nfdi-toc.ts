@@ -67,28 +67,15 @@ export class TOC extends LitElement {
 
     render() {
         return html`
-            <div class="card" style="margin-bottom: 1rem">
-                <header class="card-header">
-                    <p class="card-header-title">Content</p>
-                    <!-- <button class="card-header-icon" aria-label="more options">
-                        <span class="icon is-small">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                                <path fill="currentColor" d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z"/>
-                            </svg>
-                        </span>
-                    </button> -->
-                </header>
-                <div class="card-content">
-                    <div class="content">
-                        <ul>
-                            ${this.foundHeaders.map((item) =>
-                                html`
-                                    <div></div><a class=${"pseudoMarker " + this.marginLeft(item.depth)} href=${"#" + item.id}>${item.text}</a></div>
-                                `
-                            )}
-                        </ul>
-                    </div>
-                </div>
+            <div class="content" style="margin-bottom: 1rem">
+                <ul>
+                    <p class="label" style="text-align: center">Content</p>
+                    ${this.foundHeaders.map((item) =>
+                        html`
+                            <div></div><span class=${"pseudoMarker " + this.marginLeft(item.depth)}></span><a href=${"#" + item.id}>${item.text}</a>
+                        `
+                    )}
+                </ul>
             </div>
         `
     }
@@ -108,6 +95,12 @@ export class TOC extends LitElement {
             case 3:
                 return "depth4";
                 break;
+            case 4:
+                return "depth5";
+                break;
+            case 5:
+                return "depth6";
+                break;
             default:
                 return "depth1";
                 break;
@@ -117,7 +110,8 @@ export class TOC extends LitElement {
     connectedCallback() {
         super.connectedCallback()
         setTimeout(() => {
-            let headers = document.querySelectorAll("nfdi-h1, nfdi-h2, nfdi-h3, nfdi-h4, nfdi-h5, nfdi-h6")
+            let headers = 
+                document.querySelectorAll("nfdi-h1, nfdi-h2, nfdi-h3, nfdi-h4, nfdi-h5, nfdi-h6")
             headers.forEach(element => {
                 const depth = element.tagName.replace(/[^0-9]/g,"")  
                 this.foundHeaders.push({depth: parseInt(depth), text: element.innerHTML, id: element.id})
