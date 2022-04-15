@@ -1,18 +1,28 @@
 import { html, css, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { bulmaStyles } from './cssts/bulma-css'
+import * as Colors from './cssts/nfdi-colors'
 
 @customElement('nfdi-sidebar')
 export class Sidebar extends LitElement {
 
     static styles = [
         bulmaStyles,
+        css`
+            ::slotted(*) {
+                margin-bottom: 1rem;
+                display: block;
+                background-color: var(--outside-background-color, ${Colors.nfdiOliveLighter80});
+                color: var(--element-text-color, ${Colors.nfdiBlack});
+                border-color: var(--element-text-color, ${Colors.nfdiBlack});
+                overflow: hidden
+            }
+        `
       ] 
 
     render() {
         return html`
-            <div class="content">
-                <h2>Title</h2>
+            <div>
                 <slot></slot>
             </div>
         `
