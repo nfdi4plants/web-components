@@ -1,14 +1,58 @@
 import { html, css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { bulmaStyles } from '../cssts/bulma-css'
-// import { nfdiMint } from '../cssts/nfdi-colors'
+import * as Colors from '../cssts/nfdi-colors.js'
 
+type Header = {
+    depth: number
+    text: string
+    id: string
+    children: Header []
+}
+
+function findlowestLevelHeader(headers: Header []) {
+    const min = Math.min(...headers.map(h => h.depth))
+    return headers.filter((x_2) => (x_2.depth === min));
+}
+
+function nest(currentHeaders: Header []) {
+    const currentLevelHeader = findlowestLevelHeader(currentHeaders);
+    return currentLevelHeader.map(function(h, i) {
+        const headerIndex = currentHeaders.findIndex((x) => x == h) | 0;
+        let nextIndex;
+        const next = currentLevelHeader[i+1] as Header | undefined
+            // tryItem(i + 1, currentLevelHeader);
+        nextIndex = ((next == null) ? currentHeaders.length : currentHeaders.findIndex((x_1) => x_1 == next));
+        const children = currentHeaders.slice(headerIndex + 1, (nextIndex - 1) + 1);
+        const updatedH : Header = {depth: h.depth, text: h.text, id: h.id, children: (children.length === 0) ? [] : nest(children)};
+        return updatedH;
+    })
+}
+
+function headerToHtml(header: Header) {
+    const nextHtml: any = 
+        header.children.length !== 0 
+            ? html`
+                    <li>
+                        <a href=${"#" + header.id}>${header.text}</a>
+                        <ul>
+                            ${header.children.map(headerToHtml)}
+                        </ul>   
+                    </li>
+                `
+            : html`
+                <li>
+                    <a href=${"#" + header.id}>${header.text}</a>
+                </li>
+            `
+    return nextHtml;
+}
 
 @customElement('nfdi-toc')
 export class TOC extends LitElement {
 
-    @property({attribute: false})
-    foundHeaders : {depth: number, text: string, id: string} [] = [ ]
+    @property({ type: Array })
+    foundHeaders : {depth: number, text: string, id: string, children: Array<Header>} [] = [ ]
 
     @property({type: Number})
     lowestDepth: number = 1
@@ -16,51 +60,20 @@ export class TOC extends LitElement {
     static styles = [
         bulmaStyles,
         css`
-            ul {
-                counter-reset: h1 h2 h3 h4 h5 h6;
+            li>ul {
+                margin: 0.1em 1em !important
             }
 
-            .pseudoMarker::before {
-                padding-right: 1rem;
-                color: black;
-                pointer-events: none;
-                cursor: default;
+            li a {
+                color: var(--link-color, ${Colors.nfdiLightblue})
             }
 
-            .depth1 {counter-reset: h2 h3 h4 h5 h6;}
-            .depth1::before {
-                counter-increment: h1;
-                content: counter(h1) ".";
-                margin-left: 0px;
+            li a:hover {
+                color:var(--link-hover-color, ${Colors.nfdiBlack})
             }
-            .depth2 {counter-reset: h3 h4 h5 h6;}
-            .depth2::before {
-                counter-increment: h2;
-                content: counter(h1) "." counter(h2) ".";
-                margin-left: 2vw
-            }
-            .depth3 {counter-reset: h4 h5 h6;}
-            .depth3::before {
-                counter-increment: h3;
-                content: counter(h1) "." counter(h2) "." counter(h3) ".";
-                margin-left: 4vw
-            }
-            .depth4 {counter-reset: h5 h6;}
-            .depth4::before {
-                counter-increment: h4;
-                content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) ".";
-                margin-left: 6vw
-            }
-            .depth5 {counter-reset: h6;}
-            .depth5::before {
-                counter-increment: h5;
-                content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ".";
-                margin-left: 8vw
-            }
-            .depth6::before {
-                counter-increment: h6;
-                content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) ".";
-                margin-left: 10vw
+
+            :host {
+                color: var(--element-text-color, ${Colors.nfdiBlack}) !important
             }
         `
       ] 
@@ -69,43 +82,13 @@ export class TOC extends LitElement {
         return html`
             <div class="content" style="margin-bottom: 1rem">
                 <ul>
-                    <p class="label" style="text-align: center">Content</p>
                     ${this.foundHeaders.map((item) =>
-                        html`
-                            <div></div><span class=${"pseudoMarker " + this.marginLeft(item.depth)}></span><a href=${"#" + item.id}>${item.text}</a>
-                        `
+                        headerToHtml(item)
                     )}
                 </ul>
             </div>
         `
     }
-
-    private marginLeft(depth: number) {
-        const adjustedDepth = (depth - this.lowestDepth)
-        switch (adjustedDepth) {
-            case 0:
-                return "depth1";
-                break;
-            case 1:
-                return "depth2";
-                break;
-            case 2:
-                return "depth3";
-                break;
-            case 3:
-                return "depth4";
-                break;
-            case 4:
-                return "depth5";
-                break;
-            case 5:
-                return "depth6";
-                break;
-            default:
-                return "depth1";
-                break;
-        }
-    };
 
     connectedCallback() {
         super.connectedCallback()
@@ -114,12 +97,10 @@ export class TOC extends LitElement {
                 document.querySelectorAll("nfdi-h1, nfdi-h2, nfdi-h3, nfdi-h4, nfdi-h5, nfdi-h6")
             headers.forEach(element => {
                 const depth = element.tagName.replace(/[^0-9]/g,"")  
-                this.foundHeaders.push({depth: parseInt(depth), text: element.innerHTML, id: element.id})
+                this.foundHeaders.push({depth: parseInt(depth), text: element.innerHTML, id: element.id, children: []})
             });
-            console.log(this.foundHeaders)
-            const depths = this.foundHeaders.map((item) => {return item.depth})
-            let minDepth = Math.min(...depths)
-            this.lowestDepth = minDepth
+            // console.log(this.foundHeaders)
+            this.foundHeaders = nest(this.foundHeaders)
             this.requestUpdate()
         })
     }
