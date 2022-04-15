@@ -1,6 +1,7 @@
 import { html, css, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { bulmaStyles } from './cssts/bulma-css'
+import * as Colors from './cssts/nfdi-colors.js'
 import { mainPageBaseUrl, gitlabBaseUrl } from './params'
 
 /**
@@ -16,6 +17,7 @@ export class Footer extends LitElement {
             :host{
                 display: block;
                 clear: both;
+                overflow: auto
             }
             
             .icon {
@@ -23,17 +25,35 @@ export class Footer extends LitElement {
                 height: 1em;
                 vertical-align: -.125em;
             }
+
+            .variable-colors {
+                background-color: var(--element-background-color, ${Colors.nfdiDarkblueLighter20});
+                color: var(--element-text-color, ${Colors.nfdiWhite});
+                border-color: var(--element-text-color, ${Colors.nfdiWhite})
+            }
+
+            a {
+                color: var(--link-color, ${Colors.nfdiLightblue})
+            }
+
+            a:hover {
+                color:var(--link-hover-color, ${Colors.nfdiBlack})
+            }
+
+            .headerColor {
+                color: var(--header-color, ${Colors.nfdiWhite});
+            }
         `
       ] 
 
     render() {
         return html`
-            <footer class="footer has-bg-darkblue-lighter-20">
+            <footer class="footer variable-colors">
                 <div class="container">
                 <div class="columns">
                     <div class="column is-4 m-4">
                     <div class="block">
-                        <h3 class="subtitle is-white">
+                        <h3 class="subtitle headerColor">
                         DataPLANT - Democratization of plant research made easy.
                         </h3>
                     </div>
@@ -51,7 +71,7 @@ export class Footer extends LitElement {
                         </p>
                     </div>
                     <div class="block">
-                        <h3 class="subtitle is-white">
+                        <h3 class="subtitle headerColor">
                         Legal
                         </h3>
                     </div>
@@ -68,7 +88,7 @@ export class Footer extends LitElement {
                     </div>
                     <div class="column is-4 m-4">
                     <div class="block">
-                        <h3 class="subtitle is-white">
+                        <h3 class="subtitle headerColor">
                         Navigation
                         </h3>
                     </div>
@@ -119,7 +139,7 @@ export class Footer extends LitElement {
                     </div>
                     <div class="column is-4 m-4">
                     <div class="block">
-                        <h3 class="subtitle is-white">
+                        <h3 class="subtitle headerColor">
                         Help
                         </h3>
                     </div>
@@ -141,7 +161,7 @@ export class Footer extends LitElement {
                         </a>
                     </div>
                     <div class="block">
-                        <h3 class="subtitle is-white">
+                        <h3 class="subtitle headerColor">
                         Social
                         </h3>
                     </div>

@@ -1,7 +1,7 @@
 import { html, css, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { bulmaStyles } from '../cssts/bulma-css'
-import { nfdiMint } from '../cssts/nfdi-colors'
+import * as Colors from '../cssts/nfdi-colors.js'
 
 // https://highlightjs.org/download/
 @customElement('nfdi-code')
@@ -11,10 +11,10 @@ export class Code extends LitElement {
         bulmaStyles,
         css`
             pre {
-                background: #f4f4f4;
+                background-color: var(--outside-background-color,#F8F8FF);
                 border: 1px solid #ddd;
-                border-left: 3px solid ${nfdiMint};
-                color: #666;
+                border-left: 3px solid var(--accent-text-color,${Colors.nfdiLightblue});
+                color: var(--element-text-color, ${Colors.nfdiBlack});;
                 page-break-inside: avoid;
                 font-family: monospace;
                 font-size: 15px;
@@ -32,13 +32,19 @@ export class Code extends LitElement {
                 position: absolute;
                 right: 0;
                 top: 0;
+                border-left: 1px solid var(--element-text-color,#F8F8FF) !important;
+                border-bottom: 1px solid var(--element-text-color,#F8F8FF) !important;
+            }
+
+            .copybutton:active {
+                box-shadow: 0 0 0 1px var(--element-text-color,#F8F8FF) !important;
             }
         `
       ] 
 
     render() {
         return html`
-            <pre><button class="button is-small is-primary is-inverted copybutton" @click=${this._copyTextToClipboard}>copy</button><code><slot></slot></code></pre>
+            <pre><button class="button is-small copybutton is-ghost" @click=${this._copyTextToClipboard}>copy</button><code><slot></slot></code></pre>
         `
     }
     // https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript

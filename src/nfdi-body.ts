@@ -2,7 +2,7 @@ import { html, css, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { bulmaStyles } from './cssts/bulma-css'
 // import { nfdiBrandingStyles } from './nfdi-branding-css'
-import { nfdiOliveLighter80 } from './cssts/nfdi-colors'
+import * as Colors from './cssts/nfdi-colors'
 
 
 // https://stackoverflow.com/questions/61626493/slotted-css-selector-for-nested-children-in-shadowdom-slot
@@ -12,32 +12,42 @@ export class Body extends LitElement {
     static styles = [
         bulmaStyles,
         css`
-            .mbody {
-                background-color: ${nfdiOliveLighter80};
-                padding: 2rem;
+
+            .variable-colors {
+                background-color: var(--outside-background-color, ${Colors.nfdiOliveLighter80});
+                color: var(--element-text-color, ${Colors.nfdiBlack});
+                border-color: var(--element-text-color, ${Colors.nfdiBlack})
+            }
+
+            @media only screen and (max-width: 1023px) {
+                .columns {
+                    padding-left: 1rem;
+                    padding-right: 1rem
+                }
             }
         `
       ] 
 
+    //   https://medium.com/walmartglobaltech/activatable-drop-shadow-on-sticky-elements-d0c12f1ebfdf
+
     render() {
         return html`
-            <div class="mbody">
-                <div class="container is-max-desktop">
-                    <div class="columns">
-                        <div class="column is-one-quarter">
-                            <nfdi-sidebar>  
-                                <slot name="sidebar"></slot>
-                            </nfdi-sidebar>
-
-                        </div>
-                        <div class="column" style="padding-left: 0px; padding-right: 0px">
-                            <nfdi-content>  
-                                <slot></slot>
-                            </nfdi-content>
-                        </div>
+        <div class="variable-colors">
+            <div class="container is-max-desktop" style="padding-top: 2rem">
+                <div class="columns">
+                    <div class="column is-narrow">
+                        <nfdi-sidebar>
+                            <slot name="sidebar"></slot>
+                        </nfdi-sidebar>
+                    </div>
+                    <div class="column">
+                        <nfdi-content>  
+                            <slot></slot>
+                        </nfdi-content>
                     </div>
                 </div>
             </div>
+        </div>
         `
     }
 }
@@ -50,14 +60,30 @@ export class Body extends LitElement {
 
 //     static styles = [
 //         bulmaStyles,
-//         nfdiBrandingStyles,
+//         css`
+//             .variable-colors {
+//                 background-color: var(--outside-background-color, ${Colors.nfdiOliveLighter80});
+//                 color: var(--element-text-color, ${Colors.nfdiBlack});
+//                 border-color: var(--element-text-color, ${Colors.nfdiBlack})
+//             }
+
+//             a {
+//                 color: var(--link-color, ${Colors.nfdiLightblue})
+//             }
+
+//             a:hover {
+//                 color:var(--link-hover-color, ${Colors.nfdiBlack})
+//             }
+
+//             thead tr th, strong {
+//                 color: var(--accent-text-color, ${Colors.nfdiBlack}) !important
+//             }
+//         `
 //       ] 
 
 //     render() {
 //         return html`
-//             <nfdi-body-pseudo id="nfdi-body" class="content">
-//                 <slot></slot>
-//             </nfdi-body-pseudo>
+//             <nfdi-body-pseudo id="nfdi-body" class="content variable-colors"></nfdi-body-pseudo>
 //         `
 //     }
 
@@ -72,22 +98,23 @@ export class Body extends LitElement {
 //     //      we then append the lightDOM children as children to the nfdi-body-pseudo node.
 //     //      because they are then inside our wrapper shadowDOM our styling in 'nfdi-body' will apply to them
 
-//     // // https://jsfiddle.net/CustomElementsExamples/Lhcsd2m5/?slotmeister
-//     // // This is executed when the element is loaded
-//     // connectedCallback() {
-//     //     // https://lit.dev/docs/components/lifecycle/#custom-element-lifecycle
-//     //     super.connectedCallback()
-//     //     // make sure we can access (light)DOM here
-//     //     setTimeout(() => {
-//     //         let templateContent = Array.from(this.children)
-//     //         let filteredContent = templateContent.filter(child => child.id !== "nfdi-body")
-//     //         let shadowRoot = this.shadowRoot
-//     //         let body = shadowRoot?.getElementById("nfdi-body")
-//     //         // let body = document.getElementById("nfdi-body")
-//     //         body?.append(...filteredContent)
-//     //         console.log(filteredContent)
-//     //     })
-//     // }
+//     // https://jsfiddle.net/CustomElementsExamples/Lhcsd2m5/?slotmeister
+//     // This is executed when the element is loaded
+//     connectedCallback() {
+//         // https://lit.dev/docs/components/lifecycle/#custom-element-lifecycle
+//         super.connectedCallback()
+//         // make sure we can access (light)DOM here
+//         setTimeout(() => {
+//             let templateContent = Array.from(this.children)
+//             let filteredContent = templateContent.filter(child => child.id !== "nfdi-body")
+//             let shadowRoot = this.shadowRoot
+//             let body = shadowRoot?.getElementById("nfdi-body")
+//             // let body = document.getElementById("nfdi-body")
+//             body?.append(...filteredContent)
+//             this.classList.add("variable-colors")
+//             console.log(filteredContent)
+//         })
+//     }
 // }
 
 // https://stackoverflow.com/questions/55126694/how-to-create-litelement-without-shadow-dom

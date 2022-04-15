@@ -1,14 +1,13 @@
 import { css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
-// import { ifDefined } from 'lit/directives/if-defined.js';
 import { bulmaStyles } from '../cssts/bulma-css'
-// import { nfdiBrandingStyles } from '../nfdi-branding-css'
 import { unsafeStatic, html } from 'lit/static-html.js';
+import * as Colors from '../cssts/nfdi-colors.js'
 
 const headerstyles = css`
 
     :host {
-        scroll-margin-top: 110px
+        scroll-margin-top: 100px
     }
 
     h1,h2,h3,h4,h5,h6 {
@@ -39,6 +38,14 @@ const headerstyles = css`
         height: 16px;
     }
 
+    a {
+        color: var(--link-color, ${Colors.nfdiLightblue})
+    }
+
+    a:hover {
+        color:var(--link-hover-color, ${Colors.nfdiBlack})
+    }
+
 `
 
 const headerTemplate = (h:any, textId:string, text:string) => html`
@@ -61,6 +68,11 @@ function toInDOMHref(href: string | undefined) {
 } 
 
 const removeSpecialCharRegex = /[^a-zA-Z0-9\s]/g
+
+export function createInPageLinkText(innerHtml:string) {
+    const lightDOMText = innerHtml.trim()
+    return lightDOMText.toLowerCase().replace(removeSpecialCharRegex,"").replace(/\s/g,"-")
+}
 
 @customElement('nfdi-h1')
 export class H1 extends LitElement {
@@ -91,7 +103,7 @@ export class H1 extends LitElement {
         setTimeout(() => {
             let lightDOMText = this.innerHTML.trim()
             this.text = lightDOMText
-            let id = lightDOMText.toLowerCase().replace(removeSpecialCharRegex,"").replace(/\s/g,"-")
+            let id = createInPageLinkText(lightDOMText)
             this.id = id
             this.textId = id
         })

@@ -2,6 +2,7 @@ import { html, css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { bulmaStyles } from './cssts/bulma-css'
 import {mainPageBaseUrl, gitlabBaseUrl} from './params'
+import * as Colors from './cssts/nfdi-colors'
 
 /**
  * This element needs html {'padding-top: 3.25rem;'} for the source html.
@@ -18,12 +19,20 @@ export class Navbar extends LitElement {
         z-index: 30;
         width: 100%;
       }
-
       .icon {
         width: 1em;
         height: 1em;
         vertical-align: -.125em;
-    }`
+      }
+      .variable-colors, .navbar-item, .navbar-link, .navbar-dropdown {
+        background-color: var(--element-background-color, ${Colors.nfdiDarkblue});
+        color: var(--element-text-color, white);
+        border-color: var(--element-text-color, white)
+      }
+      .navbar-divider {
+        background-color: var(--element-text-color, white);
+      }
+    `
   ]
   
   @property({type: Boolean})
@@ -38,7 +47,7 @@ export class Navbar extends LitElement {
 
   render() {
     return html`
-      <nav class="navbar is-fixed-top has-bg-darkblue">
+      <nav class="navbar is-fixed-top variable-colors">
         <div class="navbar-brand">
           <a class="navbar-item" href="${mainPageBaseUrl}">
             <img src="https://nfdi4plants.org/images/logo.svg" alt="Logo" width="32" height="32">
@@ -49,7 +58,7 @@ export class Navbar extends LitElement {
             <span aria-hidden="true"></span>
           </div>
         </div>
-        <div id="navMenu" class=${this.navbarIsActive ? 'navbar-menu has-bg-darkblue is-active' : 'navbar-menu has-bg-darkblue'}>
+        <div id="navMenu" class=${this.navbarIsActive ? 'navbar-menu is-active' : 'navbar-menu'}>
           <div class="navbar-start is-justify-content-center is-flex-grow-1">
             <a class=${this.url == mainPageBaseUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}">
               Home
@@ -58,7 +67,7 @@ export class Navbar extends LitElement {
                 <a class="navbar-link">
                 Learn More
                 </a>
-                <div class="navbar-dropdown has-bg-darkblue is-active smooth-hover">
+                <div class="navbar-dropdown is-active smooth-hover">
                   <a class=${this.url == "${mainPageBaseUrl}/content/learn-more/our-mission.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}/content/learn-more/our-mission.html">
                     Our Mission
                   </a>
