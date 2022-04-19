@@ -31,10 +31,14 @@ export class Content extends LitElement {
                 color: var(--header-color, ${Colors.nfdiBlack}) !important;
             }
 
+            ::slotted(*) {
+                min-width: 0 !important;
+            }
+
             @media only screen and (max-width: 599px) {
                 .box {  
                     border-radius: 0;
-                    padding: .5rem 1rem 1rem 2rem;
+                    padding: 1rem;
                     border: unset
                 }
             }
