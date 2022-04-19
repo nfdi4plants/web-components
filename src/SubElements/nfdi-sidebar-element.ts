@@ -47,6 +47,11 @@ export class SidebarElement extends LitElement {
     static styles = [
         bulmaStyles,
         css`
+
+            :host {
+                min-width: 0;
+            }
+            
             button {
                 padding: 0rem;
                 border: none;

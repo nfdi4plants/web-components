@@ -24,6 +24,21 @@ export class Body extends LitElement {
                     padding-left: 1rem;
                     padding-right: 1rem
                 }
+
+                .sidebar-column {
+                    padding: 0
+                }
+            }
+
+            @media only screen and (max-width: 599px) {
+                .columns {
+                    padding: 0
+                }
+
+                .container {
+                    padding: 0 !important;
+                    border-radius: 0 !important
+                }
             }
         `
       ] 
@@ -33,9 +48,9 @@ export class Body extends LitElement {
     render() {
         return html`
         <div class="variable-colors">
-            <div class="container is-max-desktop" style="padding-top: 2rem">
-                <div class="columns">
-                    <div class="column is-narrow">
+            <div class="container is-max-desktop" style="padding: 2vh 0">
+                <div class="columns is-mobile">
+                    <div class="column is-narrow sidebar-column">
                         <nfdi-sidebar>
                             <slot name="sidebar"></slot>
                         </nfdi-sidebar>

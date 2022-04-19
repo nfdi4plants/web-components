@@ -27,7 +27,7 @@ export class Navbar extends LitElement {
       .variable-colors, .navbar-item, .navbar-link, .navbar-dropdown {
         background-color: var(--element-background-color, ${Colors.nfdiDarkblue});
         color: var(--element-text-color, white);
-        border-color: var(--element-text-color, white)
+        border-color: var(--element-text-color, white);
       }
       .navbar-divider {
         background-color: var(--element-text-color, white);
@@ -47,7 +47,7 @@ export class Navbar extends LitElement {
 
   render() {
     return html`
-      <nav class="navbar is-fixed-top variable-colors">
+      <nav class="navbar is-fixed-top variable-colors" style="border-bottom: 1px solid">
         <div class="navbar-brand">
           <a class="navbar-item" href="${mainPageBaseUrl}">
             <img src="https://nfdi4plants.org/images/logo.svg" alt="Logo" width="32" height="32">
