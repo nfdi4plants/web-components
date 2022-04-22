@@ -149,8 +149,9 @@ export class SidebarElement extends LitElement {
                     }
                     else 
                     {
-                        const anchor = createInPageLinkText(child.innerHTML);
-                        child.innerHTML = `<a href="${"#" + anchor}" style="color: unset !important">${child.innerHTML}</a>`;
+                        let hasHref = child.hasAttribute('href')
+                        let href = hasHref ? `href="${child.getAttribute('href')}" ` : ''
+                        child.innerHTML = `<a ${href}style="color: unset !important">${child.innerHTML}</a>`;
                         return child;
                     }
                 })
@@ -160,6 +161,8 @@ export class SidebarElement extends LitElement {
         })
     }
 };
+
+
 
 declare global {
     interface HTMLElementTagNameMap {
