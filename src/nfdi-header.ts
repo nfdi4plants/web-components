@@ -1,8 +1,8 @@
 import { css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
-import { bulmaStyles } from '../cssts/bulma-css'
+import { bulmaStyles } from './cssts/bulma-css'
 import { unsafeStatic, html } from 'lit/static-html.js';
-import * as Colors from '../cssts/nfdi-colors.js'
+import * as Colors from './cssts/nfdi-colors.js'
 
 const headerstyles = css`
 
