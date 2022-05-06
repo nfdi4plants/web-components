@@ -1,7 +1,8 @@
 import { html, css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
-import { bulmaStyles } from './bulma-css'
+import { bulmaStyles } from './cssts/bulma-css'
 import {mainPageBaseUrl, gitlabBaseUrl} from './params'
+import * as Colors from './cssts/nfdi-colors'
 
 /**
  * This element needs html {'padding-top: 3.25rem;'} for the source html.
@@ -15,15 +16,24 @@ export class Navbar extends LitElement {
     css`
       :host {
         position: fixed;
-        z-index: 30
+        z-index: 30;
+        width: 100%;
       }
-
       .icon {
         width: 1em;
         height: 1em;
         vertical-align: -.125em;
-    }`
-  ] 
+      }
+      .variable-colors, .navbar-item, .navbar-link, .navbar-dropdown {
+        background-color: var(--element-background-color, ${Colors.nfdiDarkblue});
+        color: var(--element-text-color, white);
+        border-color: var(--element-text-color, white);
+      }
+      .navbar-divider {
+        background-color: var(--element-text-color, white);
+      }
+    `
+  ]
   
   @property({type: Boolean})
   navbarIsActive = false;
@@ -37,7 +47,7 @@ export class Navbar extends LitElement {
 
   render() {
     return html`
-      <nav class="navbar is-fixed-top has-bg-darkblue">
+      <nav class="navbar is-fixed-top variable-colors" style="border-bottom: 1px solid">
         <div class="navbar-brand">
           <a class="navbar-item" href="${mainPageBaseUrl}">
             <img src="https://nfdi4plants.org/images/logo.svg" alt="Logo" width="32" height="32">
@@ -48,7 +58,7 @@ export class Navbar extends LitElement {
             <span aria-hidden="true"></span>
           </div>
         </div>
-        <div id="navMenu" class=${this.navbarIsActive ? 'navbar-menu has-bg-darkblue is-active' : 'navbar-menu has-bg-darkblue'}>
+        <div id="navMenu" class=${this.navbarIsActive ? 'navbar-menu is-active' : 'navbar-menu'}>
           <div class="navbar-start is-justify-content-center is-flex-grow-1">
             <a class=${this.url == mainPageBaseUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}">
               Home
@@ -57,7 +67,7 @@ export class Navbar extends LitElement {
                 <a class="navbar-link">
                 Learn More
                 </a>
-                <div class="navbar-dropdown has-bg-darkblue is-active smooth-hover">
+                <div class="navbar-dropdown is-active smooth-hover">
                   <a class=${this.url == "${mainPageBaseUrl}/content/learn-more/our-mission.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}/content/learn-more/our-mission.html">
                     Our Mission
                   </a>
@@ -125,6 +135,7 @@ export class Navbar extends LitElement {
               <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" focusable="false" viewBox="0 0 576 512">
                 <path fill="currentColor" d="M549.7 124.1c-6.281-23.65-24.79-42.28-48.28-48.6C458.8 64 288 64 288 64S117.2 64 74.63 75.49c-23.5 6.322-42 24.95-48.28 48.6-11.41 42.87-11.41 132.3-11.41 132.3s0 89.44 11.41 132.3c6.281 23.65 24.79 41.5 48.28 47.82C117.2 448 288 448 288 448s170.8 0 213.4-11.49c23.5-6.321 42-24.17 48.28-47.82 11.41-42.87 11.41-132.3 11.41-132.3s0-89.44-11.41-132.3zm-317.5 213.5V175.2l142.7 81.21-142.7 81.2z"/>
               </svg>
+            </a>
             <a class="navbar-item" href="https://zenodo.org/communities/nfdi4plants?page=1&amp;size=20" style="font-weight: bold;" title="Zenodo">
               Z
             </a>
@@ -136,7 +147,6 @@ export class Navbar extends LitElement {
 
   private _toggleNavbar() {
     this.navbarIsActive = !this.navbarIsActive
-    // this.requestUpdate()
   }
 }
 

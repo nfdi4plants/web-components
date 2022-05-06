@@ -4,6 +4,8 @@
 
 You can see the latest package version [here](https://www.npmjs.com/package/@nfdi4plants/web-components)
 
+_If this should not work, for example `package is not in the npm registry`. try `npm login` first to login to an account with release rights._
+
 ## List of projects using these web-components
 
 - [nfdi-homepage](https://github.com/nfdi4plants/nfdi4plants.github.io)
