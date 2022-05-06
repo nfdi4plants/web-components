@@ -106,3 +106,5 @@ npm publish --dry-run
 ```bash
 npm publish
 ```
+
+_If this should not work, for example `package is not in the npm registry`. try `npm login` first to login to an account with release rights._
