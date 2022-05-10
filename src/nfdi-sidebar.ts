@@ -12,6 +12,7 @@ export class Sidebar extends LitElement {
             :host {
                 display: block;
                 position: relative;
+                width: inherit
             }
 
             .inner-wrapper {
@@ -19,7 +20,8 @@ export class Sidebar extends LitElement {
                 max-height: 90%;
                 scrollbar-color: var(--element-background-color, ${Colors.nfdiWhite}) var(--accent-text-color, ${Colors.nfdiBlack});
                 overscroll-behavior: contain;
-                overflow-y: auto
+                overflow-y: auto;
+                width: 300px;
             }
 
             .inner-wrapper::-webkit-scrollbar {

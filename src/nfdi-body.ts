@@ -1,9 +1,16 @@
 import { html, css, LitElement } from 'lit'
-import { customElement } from 'lit/decorators.js'
+import { customElement, property } from 'lit/decorators.js'
 import { bulmaStyles } from './cssts/bulma-css'
 // import { nfdiBrandingStyles } from './nfdi-branding-css'
 import * as Colors from './cssts/nfdi-colors'
 
+const sidebar = html`
+    <div class="column is-narrow sidebar-column">
+        <nfdi-sidebar>
+            <slot name="sidebar"></slot>
+        </nfdi-sidebar>
+    </div>
+`
 
 // https://stackoverflow.com/questions/61626493/slotted-css-selector-for-nested-children-in-shadowdom-slot
 @customElement('nfdi-body')
@@ -43,18 +50,16 @@ export class Body extends LitElement {
         `
       ] 
 
-    //   https://medium.com/walmartglobaltech/activatable-drop-shadow-on-sticky-elements-d0c12f1ebfdf
+    @property({type: Boolean})
+    hasSidebar = false;
 
+    //   https://medium.com/walmartglobaltech/activatable-drop-shadow-on-sticky-elements-d0c12f1ebfdf
     render() {
         return html`
         <div class="variable-colors">
             <div class="container is-max-desktop" style="padding: 2vh 0">
                 <div class="columns is-mobile">
-                    <div class="column is-narrow sidebar-column">
-                        <nfdi-sidebar>
-                            <slot name="sidebar"></slot>
-                        </nfdi-sidebar>
-                    </div>
+                    ${this.hasSidebar?sidebar:html``}
                     <div class="column">
                         <nfdi-content>  
                             <slot></slot>
