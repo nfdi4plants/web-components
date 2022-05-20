@@ -38,7 +38,7 @@ export class Code extends LitElement {
             }
 
             .copybutton:active {
-                box-shadow: 0 0 0 1px var(--element-text-color,#F8F8FF) !important;
+                box-shadow: -1 1 0 1px var(--element-text-color,#F8F8FF) !important;
             }
         `
       ] 
