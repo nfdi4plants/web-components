@@ -27,7 +27,7 @@ export class Body extends LitElement {
 
             @media screen and (min-width: 1216px) {
                 .container:not(.is-max-desktop) {
-                    max-width: 1152px !important
+                    max-width: 1152px !important;
                 }
             }
 

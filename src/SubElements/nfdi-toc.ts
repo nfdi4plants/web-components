@@ -2,34 +2,9 @@ import { html, css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { bulmaStyles } from '../cssts/bulma-css'
 import * as Colors from '../cssts/nfdi-colors.js'
+import * as Nesting from '../UtilFunctions/nestHeader.js'
 
-type Header = {
-    depth: number
-    text: string
-    id: string
-    children: Header []
-}
-
-function findlowestLevelHeader(headers: Header []) {
-    const min = Math.min(...headers.map(h => h.depth))
-    return headers.filter((x_2) => (x_2.depth === min));
-}
-
-function nest(currentHeaders: Header []) {
-    const currentLevelHeader = findlowestLevelHeader(currentHeaders);
-    return currentLevelHeader.map(function(h, i) {
-        const headerIndex = currentHeaders.findIndex((x) => x == h) | 0;
-        let nextIndex;
-        const next = currentLevelHeader[i+1] as Header | undefined
-            // tryItem(i + 1, currentLevelHeader);
-        nextIndex = ((next == null) ? currentHeaders.length : currentHeaders.findIndex((x_1) => x_1 == next));
-        const children = currentHeaders.slice(headerIndex + 1, (nextIndex - 1) + 1);
-        const updatedH : Header = {depth: h.depth, text: h.text, id: h.id, children: (children.length === 0) ? [] : nest(children)};
-        return updatedH;
-    })
-}
-
-function headerToHtml(header: Header) {
+function headerToHtml(header: Nesting.Header) {
     const nextHtml: any = 
         header.children.length !== 0 
             ? html`
@@ -52,7 +27,7 @@ function headerToHtml(header: Header) {
 export class TOC extends LitElement {
 
     @property({ type: Array })
-    foundHeaders : {depth: number, text: string, id: string, children: Array<Header>} [] = [ ]
+    foundHeaders : {depth: number, text: string, id: string, children: Array<Nesting.Header>} [] = [ ]
 
     @property({type: Number})
     lowestDepth: number = 1
@@ -100,7 +75,7 @@ export class TOC extends LitElement {
                 this.foundHeaders.push({depth: parseInt(depth), text: element.innerHTML, id: element.id, children: []})
             });
             // console.log(this.foundHeaders)
-            this.foundHeaders = nest(this.foundHeaders)
+            this.foundHeaders = Nesting.nest(this.foundHeaders)
             this.requestUpdate()
         })
     }

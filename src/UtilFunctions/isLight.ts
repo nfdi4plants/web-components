@@ -2,7 +2,7 @@
 export function isLight(color: any) {
 
     type IColors = {[key:string]: string};
-
+    color = color.trim()
     const colors: IColors = {
         aliceblue: "#F0F8FF",
         antiquewhite: "#FAEBD7",
@@ -155,10 +155,9 @@ export function isLight(color: any) {
     };
     // Variables for red, green, blue values
     var r, g, b, hsp;
-    let c = colors[color.toLowerCase().trim()]
+    let c = colors[color.toLowerCase()]
     // Check the format of the color, HEX or RGB?
     if (color.match(/^rgb/)) {
-
         // If RGB --> store the red, green, blue values in separate variables
         color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
         

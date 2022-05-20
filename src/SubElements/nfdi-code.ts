@@ -80,7 +80,7 @@ export class Code extends LitElement {
         super.connectedCallback()
         setTimeout(() => {
             let customBGC = getComputedStyle(this).getPropertyValue('--outside-background-color');
-            const customCTC = getComputedStyle(this).getPropertyValue('--code-text-color');
+            let customCTC = getComputedStyle(this).getPropertyValue('--code-text-color');
             if (customBGC !== '' && customCTC == '') {
                 const newC = isLight(customBGC) ? "black" : "white"
                 this.style.setProperty('--code-text-color', newC);
