@@ -2,6 +2,7 @@ import { html, css, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { bulmaStyles } from '../cssts/bulma-css'
 import * as Colors from '../cssts/nfdi-colors.js'
+import { isLight } from '../UtilFunctions/isLight.js'
 
 // https://highlightjs.org/download/
 @customElement('nfdi-code')
@@ -14,7 +15,7 @@ export class Code extends LitElement {
                 background-color: var(--outside-background-color,#F8F8FF);
                 border: 1px solid #ddd;
                 border-left: 3px solid var(--accent-text-color,${Colors.nfdiLightblue});
-                color: var(--element-text-color, ${Colors.nfdiBlack});;
+                color: ${Colors.nfdiBlack};
                 page-break-inside: avoid;
                 font-family: monospace;
                 font-size: 15px;
@@ -44,7 +45,7 @@ export class Code extends LitElement {
 
     render() {
         return html`
-            <pre><button class="button is-small copybutton is-ghost" @click=${this._copyTextToClipboard}>copy</button><code><slot></slot></code></pre>
+            <pre id="code"><button class="button is-small copybutton is-ghost" @click=${this._copyTextToClipboard}>copy</button><code><slot></slot></code></pre>
         `
     }
     // https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
@@ -73,7 +74,25 @@ export class Code extends LitElement {
         }, function(err) {
           console.error('Async: Could not copy text: ', err);
         });
-      }
+    }
+
+    connectedCallback() {
+        super.connectedCallback()
+        setTimeout(() => {
+            let customBGC = getComputedStyle(this).getPropertyValue('--outside-background-color');
+            const customCTC = getComputedStyle(this).getPropertyValue('--code-text-color');
+            if (customBGC !== '' && customCTC == '') {
+                const newC = isLight(customBGC) ? "black" : "white"
+                this.style.setProperty('--code-text-color', newC);
+            } 
+            let c = this.shadowRoot?.getElementById('code');
+            if (c != undefined && customBGC !== '') {
+                const newC = isLight(customBGC) ? "black" : "white"
+                c.style.color = newC
+            } 
+            this.requestUpdate()
+        })
+    }
 
 }
 

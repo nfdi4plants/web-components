@@ -27,17 +27,10 @@ export class Body extends LitElement {
             }
 
             @media only screen and (max-width: 1023px) {
-                .columns {
-                    padding-left: 1rem;
-                    padding-right: 1rem
-                }
-
                 .sidebar-column {
                     padding: 0
                 }
-            }
 
-            @media only screen and (max-width: 599px) {
                 .columns {
                     padding: 0
                 }

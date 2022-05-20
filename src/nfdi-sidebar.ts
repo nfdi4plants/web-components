@@ -19,6 +19,9 @@ export class Sidebar extends LitElement {
                 position: fixed;
                 max-height: 90%;
                 scrollbar-color: var(--element-background-color, ${Colors.nfdiWhite}) var(--accent-text-color, ${Colors.nfdiBlack});
+                background-color: var(--sidebar-background-color, transparent);
+                padding: 1rem;
+                border-radius: 10px;
                 overscroll-behavior: contain;
                 overflow-y: auto;
                 width: 300px;
@@ -55,7 +58,7 @@ export class Sidebar extends LitElement {
                 z-index: 10000;
                 width: 100%;
                 border-top: .5px solid var(--element-text-color, ${Colors.nfdiBlack});
-                background-color: var(--element-background-color, ${Colors.nfdiDarkblue});;
+                background-color: var(--element-background-color, ${Colors.nfdiDarkblue});
                 justify-content: center;
                 padding: .5rem;
             }
@@ -77,7 +80,8 @@ export class Sidebar extends LitElement {
                     border-right: .5px solid var(--element-text-color, ${Colors.nfdiBlack});
                     border-bottom: .5px solid var(--element-text-color, ${Colors.nfdiBlack});
                     border-top: .5px solid var(--element-text-color, ${Colors.nfdiBlack});
-                    background-color: var(--element-background-color, ${Colors.nfdiWhite});
+                    background-color: var(--sidebar-background-color, ${Colors.nfdiWhite});
+                    border-radius: 0;
                     z-index: 10000;
                     width: 300px;
                     transition: left .5s;
