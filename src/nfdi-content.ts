@@ -35,6 +35,13 @@ export class Content extends LitElement {
                 min-width: 0 !important;
             }
 
+            @media only screen and (max-width: 1023px) {
+                .box {
+                   border: none;
+                   border-radius: 0;
+                }
+            }
+
             @media only screen and (max-width: 599px) {
                 .box {  
                     border-radius: 0;
