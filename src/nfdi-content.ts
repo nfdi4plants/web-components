@@ -25,7 +25,7 @@ export class Content extends LitElement {
                 color: var(--element-text-color, ${Colors.nfdiBlack}) !important;
                 border-color: var(--element-text-color, ${Colors.nfdiBlack});
                 border: 1px solid;
-                box-shadow: unset
+                /* box-shadow: unset */
             }
 
             ::slotted(nfdi-h1), ::slotted(nfdi-h2), ::slotted(nfdi-h3), ::slotted(nfdi-h4), ::slotted(nfdi-h5), ::slotted(nfdi-h6) {

@@ -88,7 +88,7 @@ export class SidebarElement extends LitElement {
             }
             
             .inner-wrapper ::slotted(h1) {
-                font-size: 1rem !important;
+                font-size: 0.9rem !important;
                 color: var(--sidebar-text-color, ${Colors.nfdiBlack}) !important;
                 color: ${Colors.nfdiBlack};
                 padding: 2px !important;
@@ -107,7 +107,7 @@ export class SidebarElement extends LitElement {
             }
 
             .inner-wrapper ::slotted(h3) {
-                font-size: 0.8rem !important;
+                font-size: 0.9rem !important;
                 color: var(--sidebar-text-color, ${Colors.nfdiBlack}) !important;
                 padding: 2px !important;
                 border-radius: 5px;
@@ -161,6 +161,7 @@ export class SidebarElement extends LitElement {
                     {
                         let hasHref = child.hasAttribute('href')
                         let href = hasHref ? `href="${child.getAttribute('href')}" ` : ''
+                        
                         child.innerHTML = `<a ${href}style="color: unset !important">${child.innerHTML}</a>`;
                         return child;
                     }
