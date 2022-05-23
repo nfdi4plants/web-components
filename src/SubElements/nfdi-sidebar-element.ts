@@ -101,7 +101,6 @@ export class SidebarElement extends LitElement {
                 color: var(--sidebar-text-color, ${Colors.nfdiBlack}) !important;
                 color: ${Colors.nfdiBlack};
                 padding: 2px !important;
-                border-radius: 5px;
                 margin: 0 !important;
                 cursor: pointer;
             }
@@ -110,7 +109,6 @@ export class SidebarElement extends LitElement {
                 font-size: 0.9rem !important;
                 color: var(--sidebar-text-color, ${Colors.nfdiBlack}) !important;
                 padding: 2px !important;
-                border-radius: 5px;
                 margin: 0 0 0 1rem !important;
                 cursor: pointer;
             }
@@ -119,14 +117,25 @@ export class SidebarElement extends LitElement {
                 font-size: 0.9rem !important;
                 color: var(--sidebar-text-color, ${Colors.nfdiBlack}) !important;
                 padding: 2px !important;
-                border-radius: 5px;
                 margin: 0 0 0 2rem !important;
                 cursor: pointer;
+            }
+
+            ::slotted(.active-sub-page) {
+                font-weight: bold !important;
+                border-radius: 2px !important;
+                background-color: lightgrey;
+                border-radius: 0;
             }
 
             .is-active { 
                 display: block !important
             }
+
+            .container {
+                padding: 3px
+            }
+
         `
       ] 
       
@@ -158,6 +167,8 @@ export class SidebarElement extends LitElement {
                 const newC = isLight(customSBGC) ? "black" : "white"
                 this.style.setProperty('--sidebar-text-color', newC);
             } 
+            const currentPage = window.location.pathname
+            const currentUrl = window.location.href
             const children = Array.from(this.children)
             const anchoredChildren : Node [] = 
                 children.map(child => {
@@ -169,9 +180,12 @@ export class SidebarElement extends LitElement {
                     else 
                     {
                         let hasHref = child.hasAttribute('href')
-                        let href = hasHref ? `href="${child.getAttribute('href')}" ` : ''
-                        
-                        child.innerHTML = `<a ${href}style="color: unset !important">${child.innerHTML}</a>`;
+                        let url = hasHref ? child.getAttribute('href') : ''
+                        let href = `href="${url}" `
+                        if (url == currentPage || url == currentUrl) {
+                            child.classList.add('active-sub-page')
+                        }
+                        child.innerHTML = `<a ${href}style="color: unset !important">${child.innerHTML}</a>`; 
                         return child;
                     }
                 })
