@@ -85,14 +85,14 @@ export class Sidebar extends LitElement {
                     position: fixed;
                     height: 100%;
                     top: 0;
-                    left: -300px;
+                    left: -320px;
                     border-right: .5px solid var(--element-text-color, ${Colors.nfdiBlack});
                     border-bottom: .5px solid var(--element-text-color, ${Colors.nfdiBlack});
                     border-top: .5px solid var(--element-text-color, ${Colors.nfdiBlack});
                     background-color: var(--sidebar-background-color, ${Colors.nfdiWhite});
                     border-radius: 0;
                     z-index: 10000;
-                    width: 300px;
+                    width: 320px;
                     transition: left .5s;
                     padding: 1rem;
                     max-height: 100%;
