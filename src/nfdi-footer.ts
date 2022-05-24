@@ -76,12 +76,12 @@ export class Footer extends LitElement {
                         </h3>
                     </div>
                     <div class="block">
-                        <a href="${mainPageBaseUrl}/content/imprint.html">
+                        <a href="${mainPageBaseUrl}content/imprint.html">
                         Imprint
                         </a>
                     </div>
                     <div class="block">
-                        <a href="${mainPageBaseUrl}/content/privacy.html">
+                        <a href="${mainPageBaseUrl}content/privacy.html">
                         Privacy
                         </a>
                     </div>
@@ -102,28 +102,14 @@ export class Footer extends LitElement {
                         </div>
                         <div class="block">
                         <li>
-                            <a href="${mainPageBaseUrl}/news.html">
+                            <a href="${mainPageBaseUrl}news.html">
                             News
                             </a>
                         </li>
                         </div>
                         <div class="block">
                         <li>
-                            <a href="${mainPageBaseUrl}/content/service.html">
-                            Service
-                            </a>
-                        </li>
-                        </div>
-                        <div class="block">
-                        <li>
-                            <a href="${mainPageBaseUrl}/content/about.html">
-                            About
-                            </a>
-                        </li>
-                        </div>
-                        <div class="block">
-                        <li>
-                            <a href="${mainPageBaseUrl}/content/jobs.html">
+                            <a href="${mainPageBaseUrl}content/jobs.html">
                             Jobs
                             </a>
                         </li>
