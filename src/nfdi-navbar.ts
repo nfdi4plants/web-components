@@ -51,10 +51,6 @@ export class Navbar extends LitElement {
   @property()
   url = window.location.href
 
-  static test() {
-      console.log(window.location.href)
-  }
-
   render() {
     return html`
       <nav class="navbar is-fixed-top variable-colors" style="border-bottom: 1px solid">
@@ -101,6 +97,19 @@ export class Navbar extends LitElement {
             <a class=${this.url == gitlabBaseUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${gitlabBaseUrl}">
               DataHUB
             </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link" href="${mainPageBaseUrl}">
+                Knowledge Base
+                </a>
+                <div class="navbar-dropdown is-active smooth-hover">
+                  <a class=${this.url == "${mainPageBaseUrl}content/docs/research-data-management.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}content/docs/research-data-management.html">
+                    Fundamentals
+                  </a>
+                  <a class=${this.url == "${mainPageBaseUrl}content/docs/annotated-research-context.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}content/docs/annotated-research-context.html">
+                    Integration within DataPlANT
+                  </a>
+                </div>
+              </div>
           </div>
           <div class="navbar-end">
             <a class="navbar-item" href="https://helpdesk.nfdi4plants.org/" title="Helpdesk">

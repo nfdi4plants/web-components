@@ -121,6 +121,13 @@ export class Footer extends LitElement {
                             </a>
                         </li>
                         </div>
+                        <div class="block">
+                        <li>
+                            <a href="${mainPageBaseUrl}content/docs/research-data-management.html">
+                            Knowledge Base
+                            </a>
+                        </li>
+                        </div>
                     </ul>
                     </div>
                     <div class="column is-4 m-4">
