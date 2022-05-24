@@ -2,9 +2,7 @@ import { html, css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { bulmaStyles } from '../cssts/bulma-css'
 import * as Colors from '../cssts/nfdi-colors.js'
-
-const angleRight = html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" width=1rem height=1rem class="myIcon"><path fill="currentColor" d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"/></svg>`
-const angleDown = html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width=1rem height=1rem class="myIcon"><path fill="currentColor" d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z"/></svg>`
+import { isLight } from '../UtilFunctions/isLight'
 
 @customElement('nfdi-sidebar-title')
 export class SidebarTitle extends LitElement { 
@@ -12,17 +10,30 @@ export class SidebarTitle extends LitElement {
         bulmaStyles,
         css`
             .myIcon {
+                position: absolute;
+                right: -1.5rem;
+                top: 0.5rem;
                 display: inline-block;
                 font-style: normal;
                 font-variant: normal;
                 text-rendering: auto;
                 -webkit-font-smoothing: antialiased;
                 color: var(--accent-text-color, ${Colors.nfdiBlack}) !important;
-                margin-left: 1rem;
+                transition: transform 0.1s ease-in-out;
+            }
+
+            .myIcon.isActive { 
+                transform: rotate(90deg);
             }
 
             ::slotted(*) {
                 display: inline-block
+            }
+
+            #slot-container {
+                position: relative;
+                width: fit-content;
+                text-align: left;
             }
         `
     ]
@@ -32,11 +43,13 @@ export class SidebarTitle extends LitElement {
 
     render() {
         return html`
-            <div>
+            <div id="slot-container">
                 <slot></slot>
-                ${this.isActive?angleDown:angleRight}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" width=1rem height=1rem class="${this.isActive ? `myIcon isActive` : `myIcon`}">
+                    <path fill="currentColor" d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"/>
+                </svg>
             </div>
-        `
+            `
     }
 }
 
@@ -52,6 +65,7 @@ export class SidebarElement extends LitElement {
             }
             
             button {
+                width: 90%;
                 padding: 0rem;
                 border: none;
                 background: none;
@@ -65,7 +79,7 @@ export class SidebarElement extends LitElement {
                 margin-bottom: 0.2rem;
             }
 
-            button:hover ::slotted(*) {
+            button:hover ::slotted(h1,h2,h3) {
                 text-decoration: underline !important;
             }
             
@@ -83,35 +97,46 @@ export class SidebarElement extends LitElement {
             }
             
             .inner-wrapper ::slotted(h1) {
-                font-size: 1rem !important;
-                color: var(--element-text-color, ${Colors.nfdiBlack}) !important;
+                font-size: 0.9rem !important;
+                color: var(--sidebar-text-color, ${Colors.nfdiBlack}) !important;
+                color: ${Colors.nfdiBlack};
                 padding: 2px !important;
-                border-radius: 5px;
                 margin: 0 !important;
                 cursor: pointer;
             }
 
             .inner-wrapper ::slotted(h2) {
                 font-size: 0.9rem !important;
-                color: var(--element-text-color, ${Colors.nfdiBlack}) !important;
+                color: var(--sidebar-text-color, ${Colors.nfdiBlack}) !important;
                 padding: 2px !important;
-                border-radius: 5px;
                 margin: 0 0 0 1rem !important;
                 cursor: pointer;
             }
 
             .inner-wrapper ::slotted(h3) {
-                font-size: 0.8rem !important;
-                color: var(--element-text-color, ${Colors.nfdiBlack}) !important;
+                font-size: 0.9rem !important;
+                color: var(--sidebar-text-color, ${Colors.nfdiBlack}) !important;
                 padding: 2px !important;
-                border-radius: 5px;
                 margin: 0 0 0 2rem !important;
                 cursor: pointer;
+            }
+
+            ::slotted(.active-sub-page) {
+                font-weight: bold !important;
+                text-decoration: underline !important;
+                /* border-radius: 2px !important; */
+                /* background-color: lightgrey; */
+                /* border-radius: 0; */
             }
 
             .is-active { 
                 display: block !important
             }
+
+            .container {
+                padding: 3px
+            }
+
         `
       ] 
       
@@ -132,12 +157,19 @@ export class SidebarElement extends LitElement {
 
     private _toggleActive() {
         this.isActive = !this.isActive
-        console.log(this.isActive)
     }
 
     connectedCallback() {
         super.connectedCallback()
         setTimeout(() => {
+            const customSBGC = getComputedStyle(this).getPropertyValue('--sidebar-background-color');
+            const customSTC = getComputedStyle(this).getPropertyValue('--sidebar-text-color');
+            if (customSBGC !== '' && customSTC == '') {
+                const newC = isLight(customSBGC) ? "black" : "white"
+                this.style.setProperty('--sidebar-text-color', newC);
+            } 
+            const currentPage = window.location.pathname
+            const currentUrl = window.location.href
             const children = Array.from(this.children)
             const anchoredChildren : Node [] = 
                 children.map(child => {
@@ -149,12 +181,15 @@ export class SidebarElement extends LitElement {
                     else 
                     {
                         let hasHref = child.hasAttribute('href')
-                        let href = hasHref ? `href="${child.getAttribute('href')}" ` : ''
-                        child.innerHTML = `<a ${href}style="color: unset !important">${child.innerHTML}</a>`;
+                        let url = hasHref ? child.getAttribute('href') : ''
+                        let href = `href="${url}" `
+                        if (url == currentPage || url == currentUrl) {
+                            child.classList.add('active-sub-page')
+                        }
+                        child.innerHTML = `<a ${href}style="color: unset !important">${child.innerHTML}</a>`; 
                         return child;
                     }
                 })
-            // let title = children.find((child) => child.hasAttribute('slot') && child.getAttribute('slot') === 'title')
             this.replaceChildren(...anchoredChildren)
             this.requestUpdate()
         })

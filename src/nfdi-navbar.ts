@@ -14,24 +14,30 @@ export class Navbar extends LitElement {
   static styles = [
     bulmaStyles,
     css`
-      :host {
-        position: fixed;
-        z-index: 30;
-        width: 100%;
-      }
-      .icon {
-        width: 1em;
-        height: 1em;
-        vertical-align: -.125em;
-      }
-      .variable-colors, .navbar-item, .navbar-link, .navbar-dropdown {
-        background-color: var(--element-background-color, ${Colors.nfdiDarkblue});
-        color: var(--element-text-color, white);
-        border-color: var(--element-text-color, white);
-      }
-      .navbar-divider {
-        background-color: var(--element-text-color, white);
-      }
+        :host {
+            position: fixed;
+            z-index: 30;
+            width: 100%;
+        }
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -.125em;
+        }
+        .variable-colors, .navbar-item, .navbar-link, .navbar-dropdown {
+            background-color: var(--element-background-color, ${Colors.nfdiDarkblue});
+            color: var(--element-text-color, white);
+            border-color: var(--element-text-color, white);
+        }
+        .navbar-divider {
+            background-color: var(--element-text-color, white);
+        }
+
+        @media only screen and (max-width: 1023px) {
+            #navbar-v-divide {
+                display: none
+            }
+        }
     `
   ]
   
@@ -60,50 +66,50 @@ export class Navbar extends LitElement {
         </div>
         <div id="navMenu" class=${this.navbarIsActive ? 'navbar-menu is-active' : 'navbar-menu'}>
           <div class="navbar-start is-justify-content-center is-flex-grow-1">
-            <a class=${this.url == mainPageBaseUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}">
-              Home
-            </a>
               <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                Learn More
+                <a class="navbar-link" href="${mainPageBaseUrl}">
+                About
                 </a>
                 <div class="navbar-dropdown is-active smooth-hover">
-                  <a class=${this.url == "${mainPageBaseUrl}/content/learn-more/our-mission.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}/content/learn-more/our-mission.html">
+                  <a class=${this.url == "${mainPageBaseUrl}content/learn-more/our-mission.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}content/learn-more/our-mission.html">
                     Our Mission
                   </a>
-                  <a class=${this.url == "${mainPageBaseUrl}/content/learn-more/the-community.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}/content/learn-more/the-community.html">
+                  <a class=${this.url == "${mainPageBaseUrl}content/learn-more/the-community.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}content/learn-more/the-community.html">
                     The Community
                   </a>
-                  <a class=${this.url == "${mainPageBaseUrl}/content/learn-more/annotated-research-context.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}/content/learn-more/annotated-research-context.html">
+                  <a class=${this.url == "${mainPageBaseUrl}content/learn-more/annotated-research-context.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}content/learn-more/annotated-research-context.html">
                     Annotated Research Context
                   </a>
-                  <a class=${this.url == "${mainPageBaseUrl}/content/service.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}/content/service.html">
+                  <a class=${this.url == "${mainPageBaseUrl}content/service.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}content/service.html">
                     Service
                   </a>
-                  <hr class="navbar-divider">
-                  <!-- http://www.email-obfuscator.com -->
-                  <a class="navbar-item" href="javascript:location='mailto:\u0069\u006e\u0066\u006f\u0040\u006e\u0066\u0064\u0069\u0034\u0070\u006c\u0061\u006e\u0074\u0073\u002e\u006f\u0072\u0067';void 0">
-                    <span style="margin-right: 1rem">Something missing? Write us!</span> 
-                    <span style="float: right">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" focusable="false" viewBox="0 0 512 512" >
-                        <path fill="currentColor" d="M464 64C490.5 64 512 85.49 512 112C512 127.1 504.9 141.3 492.8 150.4L275.2 313.6C263.8 322.1 248.2 322.1 236.8 313.6L19.2 150.4C7.113 141.3 0 127.1 0 112C0 85.49 21.49 64 48 64H464zM217.6 339.2C240.4 356.3 271.6 356.3 294.4 339.2L512 176V384C512 419.3 483.3 448 448 448H64C28.65 448 0 419.3 0 384V176L217.6 339.2z"/>
-                      </svg>
-                    </span>
+                  <a class=${this.url == "${mainPageBaseUrl}content/about.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}content/about.html">
+                    The Consortium
                   </a>
                 </div>
               </div>
-            <a class=${this.url == "${mainPageBaseUrl}/news.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}/news.html">
+            <a class=${this.url == "${mainPageBaseUrl}news.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}news.html">
               News
             </a>
-            <a class=${this.url == "${mainPageBaseUrl}/content/about.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}/content/about.html">
-              About
-            </a>
-            <a class=${this.url == "${mainPageBaseUrl}/content/jobs.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}/content/jobs.html">
+            <a class=${this.url == "${mainPageBaseUrl}content/jobs.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}content/jobs.html">
               Jobs
             </a>
             <a class=${this.url == gitlabBaseUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${gitlabBaseUrl}">
               DataHUB
             </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link" href="${mainPageBaseUrl}">
+                Knowledge Base
+                </a>
+                <div class="navbar-dropdown is-active smooth-hover">
+                  <a class=${this.url == "${mainPageBaseUrl}content/docs/research-data-management.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}content/docs/research-data-management.html">
+                    Fundamentals
+                  </a>
+                  <a class=${this.url == "${mainPageBaseUrl}content/docs/annotated-research-context.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}content/docs/annotated-research-context.html">
+                    Integration within DataPLANT
+                  </a>
+                </div>
+              </div>
           </div>
           <div class="navbar-end">
             <a class="navbar-item" href="https://helpdesk.nfdi4plants.org/" title="Helpdesk">
@@ -117,7 +123,7 @@ export class Navbar extends LitElement {
                 <path fill="currentColor" d="M464 64C490.5 64 512 85.49 512 112C512 127.1 504.9 141.3 492.8 150.4L275.2 313.6C263.8 322.1 248.2 322.1 236.8 313.6L19.2 150.4C7.113 141.3 0 127.1 0 112C0 85.49 21.49 64 48 64H464zM217.6 339.2C240.4 356.3 271.6 356.3 294.4 339.2L512 176V384C512 419.3 483.3 448 448 448H64C28.65 448 0 419.3 0 384V176L217.6 339.2z"/>
               </svg>
             </a>
-            <p class="navbar-item is-lightblue">
+            <p id="navbar-v-divide" class="navbar-item is-lightblue">
               |
             </p>
             <a class="navbar-item" href="https://twitter.com/nfdi4plants" title="Twitter">

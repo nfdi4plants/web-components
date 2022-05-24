@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" style="padding-top: 3.25rem; scroll-behavior: smooth;">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Lit App</title>
+    <script type="module" src="/src/index.ts"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+      body {
+        margin: 0px;
+      }
+
+      /* nfdi-navbar, nfdi-footer, nfdi-toc, nfdi-body {
+        --element-background-color: rgb(10, 12, 16);;
+        --element-text-color: white;
+        --link-color: #4FB3D9;
+        --link-hover-color: #84cae4;
+        --header-color: white;
+        --outside-background-color: #191919;
+        --accent-text-color: #1FC2A7
+      } */
+        
+        nfdi-toc, nfdi-body {
+            --outside-background-color: rgb(240, 243, 246);
+            --element-background-color: #ffffff;
+            --element-text-color: #0E1116;
+            --header-color: rgb(10, 12, 16);
+            --accent-text-color: rgb(31, 194, 167);
+            --link-color: #4FB3D9;
+            --link-hover-color: #8ad3ee;
+        }
+
+        /* nfdi-toc, nfdi-body {
+            --element-background-color: rgb(46,62,80);
+            --element-text-color: white;
+            --link-color: rgb(79, 179, 217);
+            --link-hover-color: #8ad3ee;
+            --header-color: white;
+            --outside-background-color: whitesmoke;
+            --accent-text-color: rgb(31, 194, 167)
+        } */
+
+      thead tr th, strong {
+          color: var(--accent-text-color) !important
+      }
+
+      a {
+        color: var(--link-color, #4FB3D9) !important;
+      }
+
+      a:hover {
+        color: var(--link-hover-color, #3A3A3A) !important;
+      }
+
+      thead {
+        font-size: 1.2rem;
+      }
+
+    </style>
+  </head>
+  <body>
+    <nfdi-navbar></nfdi-navbar>
+    <nfdi-body class="content" hasSidebar="true">
+      <!-- sidebar -->
+      <nfdi-sidebar-element slot="sidebar" isActive=true>
+        <div slot="title">Theory</div>
+        <h1 slot="inner" href="/">Metadata?</h1>
+    </nfdi-sidebar-element>
+    <nfdi-sidebar-element slot="sidebar" isActive=true>
+        <div slot="title">More</div>
+        <h1 slot="inner" href="/src/nested/subPage.html">Data Management Plan</h1>
+        <h1 slot="inner" href="/src/nested/FAIR.html">FAIR</h1>
+      </nfdi-sidebar-element>
+      <nfdi-h1>FAIR</nfdi-h1>
+      <!-- TOC -->
+      <nfdi-toc></nfdi-toc>
+      <!-- /TOC -->
+      <nfdi-h2><ins><strong>F1. (Meta)data are assigned a globally unique and persistent identifier</strong></ins></nfdi-h2>
+      </nfdi-body>
+    <nfdi-footer></nfdi-footer>
+  </body>
+</html>

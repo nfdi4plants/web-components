@@ -19,27 +19,29 @@ export class Body extends LitElement {
     static styles = [
         bulmaStyles,
         css`
-
             .variable-colors {
                 background-color: var(--outside-background-color, ${Colors.nfdiOliveLighter80});
                 color: var(--element-text-color, ${Colors.nfdiBlack});
                 border-color: var(--element-text-color, ${Colors.nfdiBlack})
             }
 
-            @media only screen and (max-width: 1023px) {
-                .columns {
-                    padding-left: 1rem;
-                    padding-right: 1rem
-                }
-
-                .sidebar-column {
-                    padding: 0
+            @media screen and (min-width: 1216px) {
+                .container:not(.is-max-desktop) {
+                    max-width: 1152px !important;
                 }
             }
 
-            @media only screen and (max-width: 599px) {
+            @media only screen and (max-width: 1023px) {
+                .sidebar-column {
+                    padding: 0
+                }
+
                 .columns {
                     padding: 0
+                }
+
+                .variable-colors {
+                    border: none
                 }
 
                 .container {
@@ -57,8 +59,8 @@ export class Body extends LitElement {
     render() {
         return html`
         <div class="variable-colors">
-            <div class="container is-max-desktop" style="padding: 2vh 0">
-                <div class="columns is-mobile">
+            <div class="container" style="padding: 2vh 0">
+                <div class="columns">
                     ${this.hasSidebar?sidebar:html``}
                     <div class="column">
                         <nfdi-content>  
