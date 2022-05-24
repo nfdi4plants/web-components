@@ -3,6 +3,7 @@ import { customElement, property } from 'lit/decorators.js'
 import { bulmaStyles } from '../cssts/bulma-css'
 import * as Colors from '../cssts/nfdi-colors.js'
 import * as Nesting from '../UtilFunctions/nestHeader.js'
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 
 function headerToHtml(header: Nesting.Header) {
     const nextHtml: any = 
@@ -17,7 +18,7 @@ function headerToHtml(header: Nesting.Header) {
                 `
             : html`
                 <li>
-                    <a href=${"#" + header.id}>${header.text}</a>
+                    <a href=${"#" + header.id}>${unsafeHTML(header.text)}</a>
                 </li>
             `
     return nextHtml;

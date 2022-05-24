@@ -79,7 +79,7 @@ export class SidebarElement extends LitElement {
                 margin-bottom: 0.2rem;
             }
 
-            button:hover ::slotted(*) {
+            button:hover ::slotted(h1,h2,h3) {
                 text-decoration: underline !important;
             }
             
@@ -123,9 +123,10 @@ export class SidebarElement extends LitElement {
 
             ::slotted(.active-sub-page) {
                 font-weight: bold !important;
-                border-radius: 2px !important;
-                background-color: lightgrey;
-                border-radius: 0;
+                text-decoration: underline !important;
+                /* border-radius: 2px !important; */
+                /* background-color: lightgrey; */
+                /* border-radius: 0; */
             }
 
             .is-active { 
