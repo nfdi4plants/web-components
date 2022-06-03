@@ -12,7 +12,6 @@ export default defineConfig({
       external: /^lit/,
       input: {
           main: resolve(__dirname, 'src/index.ts'),
-          nested: resolve(__dirname, 'src/nested/subPage.html')
       }
     },
     sourcemap: 'inline'
