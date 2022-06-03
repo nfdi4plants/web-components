@@ -129,6 +129,14 @@ export class SidebarElement extends LitElement {
                 /* border-radius: 0; */
             }
 
+            ::slotted(.active-page-scroll) {
+                font-weight: bold !important;
+                text-decoration: underline !important;
+                /* border-radius: 2px !important; */
+                /* background-color: lightgrey; */
+                /* border-radius: 0; */
+            }
+
             .is-active { 
                 display: block !important
             }
@@ -169,8 +177,64 @@ export class SidebarElement extends LitElement {
                 this.style.setProperty('--sidebar-text-color', newC);
             } 
             const currentPage = window.location.pathname
-            const currentUrl = window.location.href
             const children = Array.from(this.children)
+
+            // Update hightlighted sidebar slot elements according to scroll position. This is meant to work for in-page navigation only.
+            /// get URL type from sidebar href
+            function getHrefURL(ele:Element) {
+                const sidebarHref = ele.getAttribute('href')
+                // If sidebarHref comes with host (exmp.: https://github.com/nfdi4plants/Swate/wiki/docs01-installing-Swate#installing-swate),
+                // window.location.href will not be used by "new URL()".
+                // If sidebarHref is a relative path (exmp.: /#what-is-metadata),
+                // window.location.href will add the sitehost and create a complete URL.
+                const sidebarURL = new URL(sidebarHref!, window.location.href)
+                return sidebarURL
+            }
+            /// filter sidebar elements to contain an href and NOT be a title
+            function isInnerAndHref(element: Element, index: any, array: any) {
+                return element.hasAttribute('slot') && element.getAttribute('slot') != 'title' && element.hasAttribute('href') 
+            }
+            /// filter sidebar elements to contain an href with the same path as the current page PLUS a hash
+            function isOnPathAndHasHash(element: Element, index: any, array: any) {
+                const sidebarURL = getHrefURL(element)
+                return sidebarURL.origin == window.location.origin && sidebarURL.pathname == currentPage && sidebarURL.hash != ''
+            }
+            /// filtered children which can contain in-page links
+            const filteredChildren = children.filter(isInnerAndHref).filter(isOnPathAndHasHash)
+
+            // filter only for headers for which links in the sidebar exist, based on "filteredChildren"
+            function filterExistingNFDIHeaders(nfdiHeader: Element, index:any, array:any){
+                let sidebarHrefHashs = filteredChildren.map(child => getHrefURL(child).hash)
+                return sidebarHrefHashs.includes("#" + nfdiHeader.id)
+            }
+
+            const headers = Array.from(document.querySelectorAll('nfdi-body nfdi-h1, nfdi-body nfdi-h2, nfdi-body nfdi-h3'))
+
+            // add event listeners only if in-page links in the sidebar AND corresponding headers in the content exist.
+            if(filteredChildren.length > 0 && headers.length > 0) {
+                window.addEventListener('scroll', ()=> {
+                    let current = '';
+                    // iterate over headers and if header is below scroll position, set "current" to "#header.id"
+                    // so the lowest header below the scroll position will be the current one.
+                    headers.filter(filterExistingNFDIHeaders).forEach(header0 => { 
+                        const header = header0 as HTMLElement;
+                        const distanceTopHeader = header.offsetTop;
+                        if(scrollY + 50 >= distanceTopHeader){
+                            current = "#" + header.id;
+                        }
+                    })
+                    // iterate over filteredChildren, remove "active-page-scroll" and ONLY set "active-page-scroll" if "sidebarURL.hash" = "current" ("#header.id").
+                    filteredChildren.forEach(sideBarHeader => {
+                        sideBarHeader.classList.remove('active-page-scroll');
+                        const sidebarHref = sideBarHeader.getAttribute('href')
+                        const sidebarURL = new URL(sidebarHref!, window.location.href)
+                        if(sidebarURL.hash == current){
+                            sideBarHeader.classList.add('active-page-scroll')
+                        }
+                    })
+                })
+            }
+
             const anchoredChildren : Node [] = 
                 children.map(child => {
                     if (child.hasAttribute('slot') && child.getAttribute('slot') === 'title')
@@ -181,9 +245,9 @@ export class SidebarElement extends LitElement {
                     else 
                     {
                         let hasHref = child.hasAttribute('href')
-                        let url = hasHref ? child.getAttribute('href') : ''
-                        let href = `href="${url}" `
-                        if (url == currentPage || url == currentUrl) {
+                        let sidebarHref = hasHref ? child.getAttribute('href') : ''
+                        let href = `href="${sidebarHref}" `
+                        if (sidebarHref == currentPage) {
                             child.classList.add('active-sub-page')
                         }
                         child.innerHTML = `<a ${href}style="color: unset !important">${child.innerHTML}</a>`; 
