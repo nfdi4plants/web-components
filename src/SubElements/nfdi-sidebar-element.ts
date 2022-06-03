@@ -191,11 +191,11 @@ export class SidebarElement extends LitElement {
                 return sidebarURL
             }
             /// filter sidebar elements to contain an href and NOT be a title
-            function isInnerAndHref(element: Element, index: any, array: any) {
+            function isInnerAndHref(element: Element) {
                 return element.hasAttribute('slot') && element.getAttribute('slot') != 'title' && element.hasAttribute('href') 
             }
             /// filter sidebar elements to contain an href with the same path as the current page PLUS a hash
-            function isOnPathAndHasHash(element: Element, index: any, array: any) {
+            function isOnPathAndHasHash(element: Element) {
                 const sidebarURL = getHrefURL(element)
                 return sidebarURL.origin == window.location.origin && sidebarURL.pathname == currentPage && sidebarURL.hash != ''
             }
@@ -203,7 +203,7 @@ export class SidebarElement extends LitElement {
             const filteredChildren = children.filter(isInnerAndHref).filter(isOnPathAndHasHash)
 
             // filter only for headers for which links in the sidebar exist, based on "filteredChildren"
-            function filterExistingNFDIHeaders(nfdiHeader: Element, index:any, array:any){
+            function filterExistingNFDIHeaders(nfdiHeader: Element){
                 let sidebarHrefHashs = filteredChildren.map(child => getHrefURL(child).hash)
                 return sidebarHrefHashs.includes("#" + nfdiHeader.id)
             }
