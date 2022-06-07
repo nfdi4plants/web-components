@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" style="padding-top: 3.25rem; scroll-behavior: smooth;">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Lit App</title>
+    <script type="module" src="/src/index.ts"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+      body {
+        margin: 0px;
+      }
+
+      /* nfdi-navbar, nfdi-footer, nfdi-toc, nfdi-body {
+        --element-background-color: rgb(10, 12, 16);;
+        --element-text-color: white;
+        --link-color: #4FB3D9;
+        --link-hover-color: #84cae4;
+        --header-color: white;
+        --outside-background-color: #191919;
+        --accent-text-color: #1FC2A7
+      } */
+        
+        nfdi-toc, nfdi-body {
+            --outside-background-color: rgb(240, 243, 246);
+            --element-background-color: #ffffff;
+            --element-text-color: #0E1116;
+            --header-color: rgb(10, 12, 16);
+            --accent-text-color: rgb(31, 194, 167);
+            --link-color: #4FB3D9;
+            --link-hover-color: #8ad3ee;
+        }
+
+        /* nfdi-toc, nfdi-body {
+            --element-background-color: rgb(46,62,80);
+            --element-text-color: white;
+            --link-color: rgb(79, 179, 217);
+            --link-hover-color: #8ad3ee;
+            --header-color: white;
+            --outside-background-color: whitesmoke;
+            --accent-text-color: rgb(31, 194, 167)
+        } */
+
+      thead tr th, strong {
+          color: var(--accent-text-color) !important
+      }
+
+      a {
+        color: var(--link-color, #4FB3D9) !important;
+      }
+
+      a:hover {
+        color: var(--link-hover-color, #3A3A3A) !important;
+      }
+
+      thead {
+        font-size: 1.2rem;
+      }
+
+    </style>
+  </head>
+  <body>
+    <nfdi-navbar></nfdi-navbar>
+    <nfdi-body class="content" hasSidebar="true">
+      <!-- sidebar -->
+      <nfdi-sidebar-element slot="sidebar" isActive=true>
+        <div slot="title">Theory</div>
+        <h1 slot="inner" href="/">Metadata</h1>
+        <h2 slot="inner" href="/#what-is-metadata">What is metadata?</h2>
+        <h2 slot="inner" href="/#where-does-metadata-come-from">Where does metadata come from?</h2>
+        <h2 slot="inner" href="/#why-do-i-benefit-from-metadata">Why do I benefit from metadata?</h2>
+        <h2 slot="inner" href="/#what-tasks-are-important-for-rich-metadata">What tasks are important for rich metadata?</h2>
+        <h3 slot="inner" href="/#collection">Collection</h3>
+        <h3 slot="inner" href="/#structuring">Structuring</h3>
+        <h3 slot="inner" href="/#sharing-and-curation">Sharing and curation</h3> 
+    </nfdi-sidebar-element>
+    <nfdi-sidebar-element slot="sidebar" isActive=true>
+      <div slot="title">More</div>
+      <h1 slot="inner" href="/src/nested/DataManagementPlan.html">Data Management Plan</h1>
+      <h2 slot="inner" href="/src/nested/DataManagementPlan.html#ipsum-1">Ipsum 1</h2>
+      <h2 slot="inner" href="/src/nested/DataManagementPlan.html#ipsum-2">Ipsum 2</h2>
+      <h1 slot="inner" href="/src/nested/FAIR.html">FAIR</h1>
+    </nfdi-sidebar-element>
+    <nfdi-sidebar-element slot="sidebar" isActive=true>
+      <div slot="title">Tooling</div>
+      <h1 slot="inner" href="https://github.com/nfdi4plants/Swate/wiki/docs01-installing-Swate#installing-swate">Swate</h1>
+    </nfdi-sidebar-element>
+      <nfdi-h1>Data Management Plan</nfdi-h1>
+      <!-- TOC -->
+      <nfdi-toc></nfdi-toc>
+      <!-- /TOC -->
+
+      <nfdi-h2>Ipsum 1</nfdi-h2>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+
+      <nfdi-h2>Ipsum 2</nfdi-h2>
+
+      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+
+      <nfdi-h2>something something?</nfdi-h2>
+      </nfdi-body>
+    <nfdi-footer></nfdi-footer>
+  </body>
+</html>

@@ -12,7 +12,7 @@ export class Code extends LitElement {
         bulmaStyles,
         css`
             pre {
-                background-color: var(--outside-background-color,#F8F8FF);
+                background-color: var(--outside-background-color,${Colors.nfdiWhite});
                 border: 1px solid #ddd;
                 border-left: 3px solid var(--accent-text-color,${Colors.nfdiLightblue});
                 color: ${Colors.nfdiBlack};
@@ -33,12 +33,12 @@ export class Code extends LitElement {
                 position: absolute;
                 right: 0;
                 top: 0;
-                border-left: 1px solid var(--element-text-color,#F8F8FF) !important;
-                border-bottom: 1px solid var(--element-text-color,#F8F8FF) !important;
+                border-left: 1px solid var(--element-text-color,${Colors.nfdiWhite}) !important;
+                border-bottom: 1px solid var(--element-text-color,${Colors.nfdiWhite}) !important;
             }
 
             .copybutton:active {
-                box-shadow: -1 1 0 1px var(--element-text-color,#F8F8FF) !important;
+                box-shadow: -1 1 0 1px var(--element-text-color,${Colors.nfdiWhite}) !important;
             }
         `
       ] 
