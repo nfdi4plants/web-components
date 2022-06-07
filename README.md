@@ -2,7 +2,7 @@
 
 ## NPM
 
-You can see the latest package version [here](https://www.npmjs.com/package/@nfdi4plants/web-components)
+You can find the latest *NPM* package version [here](https://www.npmjs.com/package/@nfdi4plants/web-components)
 
 Check out the in depth documentation [here](https://nfdi4plants.github.io/web-components-docs/) :books:
 
@@ -10,6 +10,7 @@ Check out the in depth documentation [here](https://nfdi4plants.github.io/web-co
 
 - [nfdi-homepage](https://github.com/nfdi4plants/nfdi4plants.github.io)
 - [nfdi-helpdesk](https://github.com/Freymaurer/nfdi-helpdesk)
+- [web-components-docs](https://github.com/nfdi4plants/web-components-docs
 - dataplant-registration-frontend, found at bwcloud Gitlab Freiburg
 - keycloak theme for gitlab login, found at bwcloud Gitlab Freiburg 
 
@@ -23,43 +24,3 @@ For standard projects which already contain node module dependency bundling you 
 ```bash
 npm install @nfdi4plants/web-components@latest
 ```
-
-### Examples
-
-**1. Fable/SAFE:** [nfdi-helpdesk](https://github.com/Freymaurer/nfdi-helpdesk/blob/main/src/Client/nfdi-webcomponents.fs)
-
-# Development
-
-## Set up
-
-Pull repository and navigate to root folder.
-
-```bash
-npm install
-```
-
-## run locally
-
-```bash
-npm run dev
-```
-
-## build
-
-```bash
-npm run build
-```
-
-## publish to npm 
-
-Increase version in `package.json`.
-
-```bash
-npm publish --dry-run
-```
-
-```bash
-npm publish
-```
-
-_If this should not work, for example `package is not in the npm registry`. try `npm login` first to login to an account with release rights._
