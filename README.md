@@ -4,7 +4,7 @@
 
 You can see the latest package version [here](https://www.npmjs.com/package/@nfdi4plants/web-components)
 
-Check out the in depth documentation [here](https://github.com/nfdi4plants/web-components-docs) :books:
+Check out the in depth documentation [here](https://nfdi4plants.github.io/web-components-docs/) :books:
 
 ## List of projects using these web-components
 
