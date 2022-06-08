@@ -68,7 +68,7 @@ function toInDOMHref(href: string | undefined) {
     {return "#"}
 } 
 
-const removeSpecialCharRegex = /[^a-zA-Z0-9\s]/g
+const removeSpecialCharRegex = /[^a-zA-Z0-9\s\-]/g
 
 export function createInPageLinkText(innerHtml:string) {
     const lightDOMText = innerHtml.trim()
