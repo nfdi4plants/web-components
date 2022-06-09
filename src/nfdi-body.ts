@@ -25,6 +25,11 @@ export class Body extends LitElement {
                 border-color: var(--element-text-color, ${Colors.nfdiBlack})
             }
 
+            /* https://stackoverflow.com/questions/36230944/prevent-flex-items-from-overflowing-a-container */
+            .content-column {
+                min-width: 0;
+            }
+
             @media screen and (min-width: 1216px) {
                 .container:not(.is-max-desktop) {
                     max-width: 1152px !important;
@@ -62,7 +67,7 @@ export class Body extends LitElement {
             <div class="container" style="padding: 2vh 0">
                 <div class="columns">
                     ${this.hasSidebar?sidebar:html``}
-                    <div class="column">
+                    <div class="column content-column">
                         <nfdi-content>  
                             <slot></slot>
                         </nfdi-content>
