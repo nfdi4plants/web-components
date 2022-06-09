@@ -70,7 +70,7 @@ function toInDOMHref(href: string | undefined) {
 
 const removeSpecialCharRegex = /[^a-zA-Z0-9\s\-]/g
 
-export function createInPageLinkText(innerHtml:string) {
+export function createInPageId(innerHtml:string) {
     const lightDOMText = innerHtml.trim()
     return lightDOMText.toLowerCase().replace(removeSpecialCharRegex,"").replace(/\s/g,"-")
 }
@@ -104,7 +104,7 @@ export class H1 extends LitElement {
         setTimeout(() => {
             let lightDOMText = this.innerHTML.trim()
             this.text = lightDOMText
-            let id = createInPageLinkText(lightDOMText)
+            let id = createInPageId(lightDOMText)
             this.id = id
             this.textId = id
         })
@@ -141,7 +141,7 @@ export class H2 extends LitElement {
         setTimeout(() => {
             let lightDOMText = this.innerHTML.trim()
             this.text = lightDOMText
-            let id = lightDOMText.toLowerCase().replace(removeSpecialCharRegex,"").replace(/\s/g,"-")
+            let id = createInPageId(lightDOMText)
             this.id = id
             this.textId = id
         })
@@ -177,7 +177,7 @@ export class H3 extends LitElement {
         setTimeout(() => {
             let lightDOMText = this.innerHTML.trim()
             this.text = lightDOMText
-            let id = lightDOMText.toLowerCase().replace(removeSpecialCharRegex,"").replace(/\s/g,"-")
+            let id = createInPageId(lightDOMText)
             this.id = id
             this.textId = id
         })
@@ -213,7 +213,7 @@ export class H4 extends LitElement {
         setTimeout(() => {
             let lightDOMText = this.innerHTML.trim()
             this.text = lightDOMText
-            let id = lightDOMText.toLowerCase().replace(removeSpecialCharRegex,"").replace(/\s/g,"-")
+            let id = createInPageId(lightDOMText)
             this.id = id
             this.textId = id
         })
@@ -249,7 +249,7 @@ export class H5 extends LitElement {
         setTimeout(() => {
             let lightDOMText = this.innerHTML.trim()
             this.text = lightDOMText
-            let id = lightDOMText.toLowerCase().replace(removeSpecialCharRegex,"").replace(/\s/g,"-")
+            let id = createInPageId(lightDOMText)
             this.id = id
             this.textId = id
         })
@@ -285,7 +285,7 @@ export class H6 extends LitElement {
         setTimeout(() => {
             let lightDOMText = this.innerHTML.trim()
             this.text = lightDOMText
-            let id = lightDOMText.toLowerCase().replace(removeSpecialCharRegex,"").replace(/\s/g,"-")
+            let id = createInPageId(lightDOMText)
             this.id = id
             this.textId = id
         })
