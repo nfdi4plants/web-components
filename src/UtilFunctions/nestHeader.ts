@@ -7,11 +7,13 @@ export type Header = {
 
 export function findlowestLevelHeader(headers: Header []) {
     const min = Math.min(...headers.map(h => h.depth))
+    // console.log("min", min)
     return headers.filter((x_2) => (x_2.depth === min));
 }
 
 export function nest(currentHeaders: Header []) {
     const currentLevelHeader = findlowestLevelHeader(currentHeaders);
+    // console.log("currentLevelHeader:", currentLevelHeader)
     return currentLevelHeader.map(function(h, i) {
         const headerIndex = currentHeaders.findIndex((x) => x == h) | 0;
         let nextIndex;
