@@ -123,7 +123,7 @@ export class Footer extends LitElement {
                         </div>
                         <div class="block">
                         <li>
-                            <a href="${mainPageBaseUrl}content/docs/research-data-management.html">
+                            <a href="${mainPageBaseUrl}content/docs/ResearchDataManagement.html">
                             Knowledge Base
                             </a>
                         </li>
