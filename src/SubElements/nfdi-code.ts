@@ -11,26 +11,26 @@ import 'prismjs/components/prism-fsharp';
 import 'prismjs/components/prism-bash';
 import 'prismjs/components/prism-markdown';
 import 'prismjs/components/prism-csharp';
+import 'prismjs/components/prism-python';
 
 // https://github.com/PrismJS/prism/blob/master/plugins/line-numbers/prism-line-numbers.js#L109
 // https://stackoverflow.com/a/59577306/12858021
-const NEW_LINE_EXP = /\n(?!$)/g;
-let lineNumbersWrapper : string;
+// const NEW_LINE_EXP = /\n(?!$)/g;
+// let lineNumbersWrapper : string;
 
-Prism.hooks.add('after-tokenize', function (env) {
-    const match = env.code.match(NEW_LINE_EXP);
-    const linesNum = match ? match.length + 1 : 1;
-    const lines = new Array(linesNum + 1).join('<span></span>');
-    
-    lineNumbersWrapper = `<span aria-hidden="true" class="line-numbers-rows">${lines}</span>`;
-});
+// Prism.hooks.add('after-tokenize', function (env) {
+//     const match = env.code.match(NEW_LINE_EXP);
+//     const linesNum = match ? match.length + 1 : 1;
+//     const lines = new Array(linesNum + 1).join('<span></span>');
+//     lineNumbersWrapper = `<span aria-hidden="true" class="line-numbers-rows">${lines}</span>`;
+// });
 
 function suggestedHighlight(code: string, language: string) : string {
 	if (Prism.languages[language]) {
-		return Prism.highlight(code, Prism.languages[language], language) + lineNumbersWrapper;
+		return Prism.highlight(code, Prism.languages[language], language) //+ lineNumbersWrapper;
 	} else {
         console.log('grammar not found')
-		return Prism.util.encode(code).toString() + lineNumbersWrapper;
+		return Prism.util.encode(code).toString() //+ lineNumbersWrapper;
 	}
 }
 
@@ -42,7 +42,7 @@ export class Code extends LitElement {
         bulmaStyles,
         prismStyles,
         css`
-            pre {
+            /* pre {
                 background-color: var(--outside-background-color,${Colors.nfdiWhite});
                 border: 1px solid #ddd;
                 border-left: 3px solid var(--accent-text-color,${Colors.nfdiLightblue});
@@ -54,11 +54,11 @@ export class Code extends LitElement {
                 margin-bottom: 1.6em;
                 max-width: 100%;
                 overflow: auto;
-                padding: 1em 1.5em;
+                padding: 1em 1.5em; 
                 display: block;
                 word-wrap: break-word;
                 position: relative
-            }
+            } */
 
             .copybutton {
                 position: absolute;
@@ -132,7 +132,7 @@ export class Code extends LitElement {
                 const newC = isLight(customBGC) ? "black" : "white"
                 c.style.color = newC
             }
-            this.highlightedCode = suggestedHighlight(this.innerHTML, 'fsharp')
+            this.highlightedCode = suggestedHighlight(this.innerHTML, language.replace("language-", ""))
             this.requestUpdate()
         })
     }
