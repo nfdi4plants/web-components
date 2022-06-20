@@ -123,8 +123,8 @@ export class Code extends LitElement {
                 const newC = isLight(customBGC) ? "black" : "white"
                 this.style.setProperty('--code-text-color', newC);
             }
-            const languageArr = this.className.match(/language-[a-z]+/)!;
-            const language = languageArr[0]
+            const languageArr = this.className.match(/language-[a-z]+/);
+            const language = languageArr ? languageArr[0] : "language-"
             let c = this.shadowRoot?.getElementById('code');
             // add specified language to the code element
             c?.classList.add(language);
