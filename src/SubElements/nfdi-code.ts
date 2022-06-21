@@ -1,7 +1,6 @@
 import { html, css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
-import { bulmaStyles } from '../cssts/bulma-css'
 import * as Colors from '../cssts/nfdi-colors.js'
 import { isLight } from '../UtilFunctions/isLight.js'
 import { prismStyles } from '../cssts/prism-css';
