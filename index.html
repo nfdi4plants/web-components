@@ -91,8 +91,23 @@
       <!-- TOC -->
       <nfdi-toc></nfdi-toc>
       <!-- /TOC -->
-      <nfdi-h1>What is metadata?</nfdi-h1>
+      <nfdi-h1>What is metadata &#38; more!</nfdi-h1>
       <nfdi-h2>nfdi-code</nfdi-h2>
+      <nfdi-code class="language-json">{ 
+    "Test": 5,
+    "Test2": "Some string",
+    "Test3": [1,2,3,4,5],
+    "Test4": {
+        "Test5": "Some string"
+        "Test6": 5
+    },
+    "Test_Bool": true
+}</nfdi-code>
+<nfdi-code class="language-yml">foo: bar
+    pleh: "help"
+    stuff:
+      foo: bar
+      bar: foo</nfdi-code>
       <nfdi-code class="language-fsharp">#r "nuget: DynamicObj, 1.0.1"
 #r "nuget: Expecto, 9.0.4"
 
@@ -100,6 +115,8 @@ open DynamicObj
 open Newtonsoft.Json
 open System.IO
 open Microsoft.FSharp.Core
+
+let name = "John"
 
 type JsonParser = {
     TokenType: JsonToken

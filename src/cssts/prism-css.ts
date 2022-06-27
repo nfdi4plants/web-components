@@ -1,26 +1,28 @@
-import {css, unsafeCSS} from 'lit';
+import {css} from 'lit';
+import * as Color from '../cssts/nfdi-colors';
 
 /* PrismJS 1.28.0
-https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+bash+csharp+fsharp+markdown+python+typescript&plugins=line-numbers */
+https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+bash+csharp+fsharp+json+markdown+python+typescript+yaml&plugins=line-numbers */
 
-let cssString0 = `
+let cssString0 = css`
 code[class*=language-],pre[class*=language-]{color:#000;background:0 0;text-shadow:0 1px #fff;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-] ::-moz-selection,code[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection{text-shadow:none;background:#b3d4fc}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}
 `
 
-const prismTokenString = "#690" //green
-const prismTokenClassName = "#dd4a68" // lightred
-const prismTokenPunctuation = "#999" // gray
-const prismTokenImportant = "#e90" //deepyellow
+export const prismStyles = css`
+    
+    ${cssString0}
 
-const nfdiRedDarker30 = "#871528"
-const nfdiMintDarker20 = "#199b86"
-const nfdiYellowDarker20 = "#cc9a00"
+    .token.attr-name { color: ${Color.nfdiLightblue} }
 
-let cssString =
-    cssString0
-        .replace(prismTokenString, nfdiRedDarker30)
-        .replace(prismTokenClassName, nfdiMintDarker20)
-        .replace(prismTokenPunctuation, nfdiYellowDarker20)
-        .replace(prismTokenImportant, nfdiYellowDarker20)
+    .token.attr-value, .token.string { color: #C3723B }
 
-export const prismStyles = css`${unsafeCSS(cssString)}`
+    .token.tag { color: #569CD6 }
+
+    .token.class-name { color: ${Color.nfdiMint} }
+
+    .token.number { color: ${Color.nfdiMintLighter20} }
+
+    .token.property { color: ${Color.nfdiLightblue} }
+
+    .token.operator { color: unset; background-color: unset }
+`
