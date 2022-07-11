@@ -1,7 +1,7 @@
 import { html, css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { bulmaStyles } from './cssts/bulma-css'
-import {mainPageBaseUrl, gitlabBaseUrl} from './params'
+import {mainPageBaseUrl, gitlabBaseUrl, knowledgeBaseUrl} from './params'
 import * as Colors from './cssts/nfdi-colors'
 
 /**
@@ -97,19 +97,9 @@ export class Navbar extends LitElement {
             <a class=${this.url == gitlabBaseUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${gitlabBaseUrl}">
               DataHUB
             </a>
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link" href="${mainPageBaseUrl}content/docs/ResearchDataManagement.html">
-                Knowledge Base
-                </a>
-                <div class="navbar-dropdown is-active smooth-hover">
-                  <a class=${this.url == "${mainPageBaseUrl}content/docs/ResearchDataManagement.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}content/docs/ResearchDataManagement.html">
-                    Fundamentals
-                  </a>
-                  <a class=${this.url == "${mainPageBaseUrl}content/docs/AnnotatedResearchContext.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}content/docs/AnnotatedResearchContext.html">
-                    Integration within DataPLANT
-                  </a>
-                </div>
-              </div>
+            <a class=${this.url.includes(knowledgeBaseUrl,0)  ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${knowledgeBaseUrl}index.html">
+            Knowledge Base
+            </a>
           </div>
           <div class="navbar-end">
             <a class="navbar-item" href="https://helpdesk.nfdi4plants.org/" title="Helpdesk">
