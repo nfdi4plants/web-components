@@ -188,7 +188,9 @@ export class Code extends LitElement {
                 const trimStart = code.startsWith(start) ? code.slice(start.length) : code
                 return trimStart.endsWith(end) ? trimStart.slice(0, trimStart.length - end.length) : trimStart
             }
-            this.highlightedCode = suggestedHighlight(trimCode(this.innerHTML), language.replace("language-", ""))
+            let processedInnerHtml = trimCode(this.innerHTML.replace('&gt;','>').replace('&lt;','<'))
+            // console.log(this.innerHTML.replace('&gt;','>').replace('&lt;','<'))
+            this.highlightedCode = suggestedHighlight(processedInnerHtml, language.replace("language-", ""))
             this.requestUpdate()
         })
     }
