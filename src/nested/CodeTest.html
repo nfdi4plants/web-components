@@ -76,35 +76,69 @@
         <h3 slot="inner" href="/#sharing-and-curation">Sharing and curation</h3> 
     </nfdi-sidebar-element>
     <nfdi-sidebar-element slot="sidebar" isActive=true>
-      <div slot="title">More</div>
-      <h1 slot="inner" href="/src/nested/DataManagementPlan.html">Data Management Plan</h1>
-      <h2 slot="inner" href="/src/nested/DataManagementPlan.html#ipsum-1">Ipsum 1</h2>
-      <h2 slot="inner" href="/src/nested/DataManagementPlan.html#ipsum-2">Ipsum 2</h2>
-      <h1 slot="inner" href="/src/nested/FAIR.html">FAIR</h1>
-    </nfdi-sidebar-element>
-    <nfdi-sidebar-element slot="sidebar" isActive=true>
-      <div slot="title">Tooling</div>
-      <h1 slot="inner" href="https://github.com/nfdi4plants/Swate/wiki/docs01-installing-Swate#installing-swate">Swate</h1>
+        <div slot="title">Tests</div>
+        <h1 slot="inner" href="/src/nested/CodeTest.html">CodeTests</h1>
+        <h1 slot="inner" href="/src/nested/HeaderTest.html">HeaderTest</h1>
+        <h2 slot="inner" href="/src/nested/HeaderTest.html#ipsum-1">Ipsum 1</h2>
+        <h2 slot="inner" href="/src/nested/HeaderTest.html#ipsum-2">Ipsum 2</h2>
+        <h1 slot="inner" href="/src/nested/FAIR.html">FAIR</h1>
     </nfdi-sidebar-element>
       <nfdi-h1>Test nfdi-toc element!</nfdi-h1>
       <!-- TOC -->
       <nfdi-toc></nfdi-toc>
       <!-- /TOC -->
 
-      <nfdi-h1>Annotated Research Context!</nfdi-h1>
-      <nfdi-h2>ARC features & prospects!</nfdi-h2>
-      <nfdi-h3>Data provenance & integrity!</nfdi-h3>
-      <nfdi-h3>Identification & searchability!</nfdi-h3>
+      <nfdi-h2>nfdi-code</nfdi-h2>
+      <nfdi-code class="language-fsharp">let files = 
+    Directory.GetFiles(docsPath, "*")
+    |> Array.filter (fun n -> n.Contains @"\_sidebars\" |> not && n.Contains "/_sidebars/" |> not)</nfdi-code>
+      <nfdi-code class="language-bash">https://git.nfdi4plants.org/&lt;yourusername&gt;/&lt;yourarc&gt;</nfdi-code>
+      <nfdi-code class="language-json">{ 
+    "Test": 5,
+    "Test2": "Some string",
+    "Test3": [1,2,3,4,5],
+    "Test4": {
+        "Test5": "Some string"
+        "Test6": 5
+    },
+    "Test_Bool": true
+}</nfdi-code>
+<nfdi-code class="language-yml">foo: bar
+    pleh: "help"
+    stuff:
+      foo: bar
+      bar: foo</nfdi-code>
+      <nfdi-code class="language-fsharp">#r "nuget: DynamicObj, 1.0.1"
+#r "nuget: Expecto, 9.0.4"
 
-      <nfdi-h2>Ipsum 1</nfdi-h2>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+open DynamicObj
+open Newtonsoft.Json
+open System.IO
+open Microsoft.FSharp.Core
 
-      <nfdi-h2>Ipsum 2</nfdi-h2>
+let name = "John"
 
-      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+type JsonParser = {
+    TokenType: JsonToken
+    Value: string option
+} with
+    static member create tokenType value = {
+        TokenType = tokenType
+        Value = value
+    }
 
-      <nfdi-h2>something something?</nfdi-h2>
-      </nfdi-body>
+let x = 
+    20 |> (+) 2</nfdi-code>
+    <nfdi-code class="language-bash">npm install @nfdi4plants/web-components</nfdi-code>
+    <nfdi-code class="language-markup"><script type="text/plain"><p class="hey">Type some code here</p></script></nfdi-code>
+    <nfdi-code class="language-markdown"># Title one-person
+
+Lorem ipsum dolor sit amet, **consetetur sadipscing elitr**, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+```javascript
+function(){ console.log("Hello World!") }
+```</nfdi-code>
+    </nfdi-body>
     <nfdi-footer></nfdi-footer>
   </body>
 </html>

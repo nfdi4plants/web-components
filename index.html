@@ -76,69 +76,19 @@
           <h3 slot="inner" href="/#sharing-and-curation">Sharing and curation</h3> 
       </nfdi-sidebar-element>
       <nfdi-sidebar-element slot="sidebar" isActive=true>
-        <div slot="title">More</div>
-        <h1 slot="inner" href="/src/nested/DataManagementPlan.html">Data Management Plan</h1>
-        <h2 slot="inner" href="/src/nested/DataManagementPlan.html#ipsum-1">Ipsum 1</h2>
-        <h2 slot="inner" href="/src/nested/DataManagementPlan.html#ipsum-2">Ipsum 2</h2>
+        <div slot="title">Tests</div>
+        <h1 slot="inner" href="/src/nested/CodeTest.html">CodeTests</h1>
+        <h1 slot="inner" href="/src/nested/HeaderTest.html">HeaderTest</h1>
+        <h2 slot="inner" href="/src/nested/HeaderTest.html#ipsum-1">Ipsum 1</h2>
+        <h2 slot="inner" href="/src/nested/HeaderTest.html#ipsum-2">Ipsum 2</h2>
         <h1 slot="inner" href="/src/nested/FAIR.html">FAIR</h1>
-      </nfdi-sidebar-element>
-      <nfdi-sidebar-element slot="sidebar" isActive=true>
-        <div slot="title">Tooling</div>
-        <h1 slot="inner" href="https://github.com/nfdi4plants/Swate/wiki/docs01-installing-Swate#installing-swate">Swate</h1>
-      </nfdi-sidebar-element>
+    </nfdi-sidebar-element>
       <!-- content -->
       <h1>Metadata</h1>
       <!-- TOC -->
       <nfdi-toc></nfdi-toc>
       <!-- /TOC -->
       <nfdi-h1>What is metadata &#38; more!</nfdi-h1>
-      <nfdi-h2>nfdi-code</nfdi-h2>
-      <nfdi-code class="language-bash">https://git.nfdi4plants.org/&lt;yourusername&gt;/&lt;yourarc&gt;</nfdi-code>
-      <nfdi-code class="language-json">{ 
-    "Test": 5,
-    "Test2": "Some string",
-    "Test3": [1,2,3,4,5],
-    "Test4": {
-        "Test5": "Some string"
-        "Test6": 5
-    },
-    "Test_Bool": true
-}</nfdi-code>
-<nfdi-code class="language-yml">foo: bar
-    pleh: "help"
-    stuff:
-      foo: bar
-      bar: foo</nfdi-code>
-      <nfdi-code class="language-fsharp">#r "nuget: DynamicObj, 1.0.1"
-#r "nuget: Expecto, 9.0.4"
-
-open DynamicObj
-open Newtonsoft.Json
-open System.IO
-open Microsoft.FSharp.Core
-
-let name = "John"
-
-type JsonParser = {
-    TokenType: JsonToken
-    Value: string option
-} with
-    static member create tokenType value = {
-        TokenType = tokenType
-        Value = value
-    }
-
-let x = 
-    20 |> (+) 2</nfdi-code>
-    <nfdi-code class="language-bash">npm install @nfdi4plants/web-components</nfdi-code>
-    <nfdi-code class="language-markup"><script type="text/plain"><p class="hey">Type some code here</p></script></nfdi-code>
-    <nfdi-code class="language-markdown"># Title one-person
-
-Lorem ipsum dolor sit amet, **consetetur sadipscing elitr**, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-```javascript
-function(){ console.log("Hello World!") }
-```</nfdi-code>
       <p>Metadata is &quot;data that provides information about other data&quot;<sup><a href="https://www.merriam-webster.com/dictionary/metadata" title="Merriam Webster definition of metadata">1</a></sup>. In order to put some (plant) life into this web dictionary explanation, let us explore metadata with a plant biology example:</p>
       <blockquote>
       Viola investigates the effect of the plant circadian clock on sugar metabolism in <em>W. mirabilis</em>. For her PhD project, which is part of an EU-funded consortium in Prof. Beetroot&#39;s lab, she acquires seeds from a South-African botanical society. Viola grows the plants under different light regimes, harvests leaves from a two-day time series experiment, extracts polar metabolites as well as RNA and submits the samples to nearby core facilities for metabolomics and transcriptomics measurements, respectively. After a few weeks of iterative consultation with the facilities&#39; heads as well as technicians and computational biologists involved, Viola receives back a wealth of raw and processed data. From the data she produces figures and wraps everything up to publish the results in the <em>Journal of Wonderful Plant Sciences</em>.
