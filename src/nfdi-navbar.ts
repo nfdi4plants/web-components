@@ -1,7 +1,7 @@
 import { html, css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { bulmaStyles } from './cssts/bulma-css'
-import {mainPageBaseUrl, gitlabBaseUrl, knowledgeBaseUrl} from './params'
+import {mainPageBaseUrl, gitlabBaseUrl, knowledgeBaseUrl, dataPLANGeneratorUrl} from './params'
 import * as Colors from './cssts/nfdi-colors'
 
 /**
@@ -93,6 +93,9 @@ export class Navbar extends LitElement {
             </a>
             <a class=${this.url == "${mainPageBaseUrl}content/jobs.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}content/jobs.html">
               Jobs
+            </a>
+            <a class=${this.url == dataPLANGeneratorUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${dataPLANGeneratorUrl}">
+              DataPLAN
             </a>
             <a class=${this.url == gitlabBaseUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${gitlabBaseUrl}">
               DataHUB
