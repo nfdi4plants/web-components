@@ -24,3 +24,7 @@ For standard projects which already contain node module dependency bundling you 
 ```bash
 npm install @nfdi4plants/web-components@latest
 ```
+
+## Local development
+
+Run `npm run dev` in the root folder and you can see all changes in http://localhost:3000/.
