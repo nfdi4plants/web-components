@@ -73,7 +73,7 @@ export class TOC extends LitElement {
                 document.querySelectorAll("nfdi-h1, nfdi-h2, nfdi-h3, nfdi-h4, nfdi-h5, nfdi-h6")
             headers.forEach(element => {
                 const depth = element.tagName.replace(/[^0-9]/g,"")  
-                this.foundHeaders.push({depth: parseInt(depth), text: element.innerHTML, id: element.id, children: []})
+                this.foundHeaders.push({depth: parseInt(depth), text: element.innerHTML.replace('&amp;', '&'), id: element.id, children: []})
             });
             // console.log(this.foundHeaders)
             this.foundHeaders = Nesting.nest(this.foundHeaders)

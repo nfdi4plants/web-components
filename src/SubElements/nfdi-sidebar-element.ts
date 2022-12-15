@@ -219,7 +219,7 @@ export class SidebarElement extends LitElement {
                     headers.filter(filterExistingNFDIHeaders).forEach(header0 => { 
                         const header = header0 as HTMLElement;
                         const distanceTopHeader = header.offsetTop;
-                        if(scrollY + 50 >= distanceTopHeader){
+                        if(scrollY + 200 >= distanceTopHeader){
                             current = "#" + header.id;
                         }
                     })

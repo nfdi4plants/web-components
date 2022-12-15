@@ -3158,7 +3158,7 @@ a.tag:hover {
   max-width: 100%;
 }
 
-.number {
+/* .number {
   align-items: center;
   background-color: whitesmoke;
   border-radius: 290486px;
@@ -3171,7 +3171,7 @@ a.tag:hover {
   padding: 0.25rem 0.5rem;
   text-align: center;
   vertical-align: top;
-}
+} */
 
 /* Bulma Form */
 .select select, .textarea, .input {

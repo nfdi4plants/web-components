@@ -2,6 +2,7 @@ import {css} from 'lit';
 
 // https://github.com/nfdi4plants/Branding#tldr
 export const nfdiMint = css`#1FC2A7`
+export const nfdiMintLighter20 = css`#4cceb9`
 export const nfdiMintDarker20 = css`#199b86`
 
 export const nfdiLightblue = css`#4FB3D9`
