@@ -12,7 +12,6 @@ export class Sidebar extends LitElement {
             .inner-wrapper {
                 position: sticky;
                 top: 71px;
-                max-height: 90%;
                 scrollbar-color: var(--element-background-color, ${Colors.nfdiWhite}) var(--accent-text-color, ${Colors.nfdiBlack});
                 background-color: var(--sidebar-background-color, transparent);
                 padding: 1rem;
@@ -70,6 +69,7 @@ export class Sidebar extends LitElement {
                 .main {
                     display: grid; 
                     height: 100%;
+                    min-height: max-content;
                     grid-template-columns: 1fr; grid-template-rows: 1fr;
                 }
 
@@ -109,7 +109,7 @@ export class Sidebar extends LitElement {
                 }
 
                 :host {
-                    display: inline
+                    display: inline;
                 }
 
                 .fixed-footer {
