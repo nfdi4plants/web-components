@@ -28,4 +28,16 @@ npm install @nfdi4plants/web-components@latest
 
 ## Local development
 
+### Set Up
+
+Once `npm install`.
+
+### Run
+
 Run `npm run dev` in the root folder and you can see all changes in http://localhost:3000/.
+
+### Publish
+
+Test: `npm publish --dry-run`
+
+Publish: `npm publish`
