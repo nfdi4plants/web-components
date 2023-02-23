@@ -98,7 +98,7 @@ export class Navbar extends LitElement {
                 DataPLAN
                 </a>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class=${this.url == gitlabBaseUrl ? "navbar-link is-active smooth-hover" : "navbar-link"} href="${gitlabBaseUrl}">
+                    <a class=${this.url == gitlabBaseUrl ? "navbar-link is-active smooth-hover" : "navbar-link"}>
                     DataHUB
                     </a>
                     <div class="navbar-dropdown is-active smooth-hover">

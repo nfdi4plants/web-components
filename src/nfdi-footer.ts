@@ -124,7 +124,7 @@ export class Footer extends LitElement {
                         <div class="block">
                         <li>
                             <a href="${gitlabBaseUrl}">
-                            DataHUB
+                            PLANT-DataHUB
                             </a>
                         </li>
                         </div>
