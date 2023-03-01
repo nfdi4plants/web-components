@@ -11,9 +11,10 @@
     "Benedikt Venn",
     "Bianca Frommer",
     "Kevin Schneider",
-    "Kevin Frey"
+    "Kevin Frey",
+    "Cristina Martins Rodrigues"
   ],
-  "version": "0.10.0",
+  "version": "0.11.0",
   "main": "dist/web-components.es.js",
   "exports": {
     ".": "./dist/web-components.es.js"
