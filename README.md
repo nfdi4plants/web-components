@@ -38,6 +38,7 @@ Run `npm run dev` in the root folder and you can see all changes in http://local
 
 ### Publish
 
-1. `npm run build`
-2. Test: `npm publish --dry-run`
-3. Publish: `npm publish`
+1. Increase version in `package.json`
+2. `npm run build`
+3. Test: `npm publish --dry-run`
+4. Publish: `npm publish`
