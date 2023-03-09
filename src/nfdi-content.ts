@@ -13,6 +13,10 @@ export class Content extends LitElement {
                 text-align: justify;
             }
 
+            :host {
+                display: block
+            }
+
             ::slotted(blockquote) {
                 text-align: justify;
                 background-color: var(--element-background-color, ${Colors.nfdiWhite}) !important;
@@ -25,6 +29,7 @@ export class Content extends LitElement {
                 color: var(--element-text-color, ${Colors.nfdiBlack}) !important;
                 border-color: var(--element-text-color, ${Colors.nfdiBlack});
                 border: 1px solid;
+                width: inherit
                 /* box-shadow: unset */
             }
 
@@ -34,6 +39,11 @@ export class Content extends LitElement {
 
             ::slotted(*) {
                 min-width: 0 !important;
+            }
+
+            ::slotted(table) {
+                border: 1px solid red !important;
+                overflow-x: scroll;
             }
 
             @media only screen and (max-width: 1023px) {
