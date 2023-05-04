@@ -78,6 +78,8 @@
     Directory.GetFiles(docsPath, "*")
     |> Array.filter (fun n -> n.Contains @"\_sidebars\" |> not && n.Contains "/_sidebars/" |> not)</nfdi-code>
       <nfdi-code class="language-bash">https://git.nfdi4plants.org/&lt;yourusername&gt;/&lt;yourarc&gt;</nfdi-code>
+      <div>This is used to test for <a href="https://github.com/nfdi4plants/web-components/issues/32">Issue #32</a>.</div>
+      <nfdi-code class="language-bash">curl -L https://github.com/nfdi4plants/arcCommander/releases/download/v0.4.0-osx.x64/arc > arc</nfdi-code>
       <nfdi-code class="language-json">{ 
     "Test": 5,
     "Test2": "Some string",

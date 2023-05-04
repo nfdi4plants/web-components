@@ -35,6 +35,17 @@ function suggestedHighlight(code: string, language: string) : string {
 	}
 }
 
+function trimCode(code: string) {
+    const start = '<script type="text/plain">'
+    const end = '</script>'
+    const trimStart = code.startsWith(start) ? code.slice(start.length) : code
+    return trimStart.endsWith(end) ? trimStart.slice(0, trimStart.length - end.length) : trimStart
+}
+
+function processInnerHtml(innerHtml: string) : string  {
+    return trimCode(innerHtml.replace(/&gt;/ig,'>',).replace(/&lt;/ig,'<').replace(/&amp;/ig,'&'))
+}
+
 // https://highlightjs.org/download/
 @customElement('nfdi-code')
 export class Code extends LitElement {
@@ -152,7 +163,7 @@ export class Code extends LitElement {
     }
 
     private _copyTextToClipboard() {
-        let text = this.innerHTML
+        let text = processInnerHtml(this.innerHTML)
         if (!navigator.clipboard) {
             this.fallbackCopyTextToClipboard(!text ? '' : text);
             return;
@@ -181,21 +192,15 @@ export class Code extends LitElement {
             if (c != undefined && customBGC !== '') {
                 const newC = isLight(customBGC) ? "black" : "white"
                 c.style.color = newC
-            }
-            const start = '<script type="text/plain">'
-            const end = '</script>'
-            function trimCode(code: string) {
-                const trimStart = code.startsWith(start) ? code.slice(start.length) : code
-                return trimStart.endsWith(end) ? trimStart.slice(0, trimStart.length - end.length) : trimStart
-            }
-            let processedInnerHtml = trimCode(this.innerHTML.replace(/&gt;/ig,'>',).replace(/&lt;/ig,'<').replace(/&amp;/ig,'&'))
+            }           
+            this.innerHTML.replace(/&gt;/ig,'>',).replace(/&lt;/ig,'<').replace(/&amp;/ig,'&')
+            let processedInnerHtml = processInnerHtml(this.innerHTML)
             // console.log(this.innerHTML)
             // console.log(processedInnerHtml)
             this.highlightedCode = suggestedHighlight(processedInnerHtml, language.replace("language-", ""))
             this.requestUpdate()
         })
     }
-
 }
 
 declare global {
