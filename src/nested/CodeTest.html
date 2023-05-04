@@ -90,6 +90,19 @@
     },
     "Test_Bool": true
 }</nfdi-code>
+<my-component>
+    graph LR
+    A --- B
+    B-->C[fa:fa-ban forbidden]
+    B-->D(fa:fa-spinner);
+</my-component>
+Here is a mermaid diagram in nfdi-code
+<nfdi-code class="mermaid">
+    graph LR
+    A --- B
+    B-->C[fa:fa-ban forbidden]
+    B-->D(fa:fa-spinner);
+</nfdi-code>
 <nfdi-code class="language-yml">foo: bar
     pleh: "help"
     stuff:

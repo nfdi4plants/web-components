@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "lit": "^2.0.2",
+    "mermaid": "^10.1.0",
     "prismjs": "^1.28.0"
   },
   "devDependencies": {

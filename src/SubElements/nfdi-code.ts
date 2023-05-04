@@ -13,6 +13,8 @@ import 'prismjs/components/prism-csharp';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-yaml';
+import mermaid from 'mermaid';
+// import 'mermaid/dist/mermaid.css';
 
 // https://github.com/PrismJS/prism/blob/master/plugins/line-numbers/prism-line-numbers.js#L109
 // https://stackoverflow.com/a/59577306/12858021
@@ -26,10 +28,18 @@ import 'prismjs/components/prism-yaml';
 //     lineNumbersWrapper = `<span aria-hidden="true" class="line-numbers-rows">${lines}</span>`;
 // });
 
-function suggestedHighlight(code: string, language: string) : string {
+const code_id = 'code'
+
+async function suggestedHighlight(element: HTMLElement | null | undefined, code: string, language: string) : Promise<string> {
 	if (Prism.languages[language]) {
 		return Prism.highlight(code, Prism.languages[language], language) //+ lineNumbersWrapper;
-	} else {
+	} else if (language = 'mermaid') {
+        // mermaid.initialize({startOnLoad: true})
+        const { svg, bindFunctions } = await mermaid.render(code_id, code)
+        element!.innerHTML = svg;
+        bindFunctions?.(element!);
+        return ''
+    } else {
         console.log('grammar not found')
 		return Prism.util.encode(code).toString() //+ lineNumbersWrapper;
 	}
@@ -53,7 +63,7 @@ export class Code extends LitElement {
     static styles = [
         prismStyles,
         css`
-            div {
+            #maincontainer {
                 background-color: var(--outside-background-color,${Colors.nfdiWhite});
                 border: 1px solid #ddd;
                 border-left: 3px solid var(--accent-text-color,${Colors.nfdiLightblue});
@@ -141,9 +151,9 @@ export class Code extends LitElement {
 
     render() {
         return html`
-            <div>
+            <div id="maincontainer">
                 <button class="button is-small copybutton is-ghost" @click=${this._copyTextToClipboard}>copy</button>
-                <pre id="code" class="line-numbers"><code>${unsafeHTML(this.highlightedCode)}<slot></slot></code></pre>
+                <pre id=${code_id} class="line-numbers"><code>${unsafeHTML(this.highlightedCode)}<slot></slot></code></pre>
             </div>
         `
     }
@@ -177,14 +187,14 @@ export class Code extends LitElement {
 
     connectedCallback() {
         super.connectedCallback()
-        setTimeout(() => {
+        setTimeout(async () => {
             let customBGC = getComputedStyle(this).getPropertyValue('--outside-background-color');
             let customCTC = getComputedStyle(this).getPropertyValue('--code-text-color');
             if (customBGC !== '' && customCTC == '') {
                 const newC = isLight(customBGC) ? "black" : "white"
                 this.style.setProperty('--code-text-color', newC);
             }
-            const languageArr = this.className.match(/language-[a-z]+/);
+            const languageArr = this.className.match(/(language-[a-z]+|mermaid)/);
             const language = languageArr ? languageArr[0] : "language-"
             let c = this.shadowRoot?.getElementById('code');
             // add specified language to the code element
@@ -197,7 +207,7 @@ export class Code extends LitElement {
             let processedInnerHtml = processInnerHtml(this.innerHTML)
             // console.log(this.innerHTML)
             // console.log(processedInnerHtml)
-            this.highlightedCode = suggestedHighlight(processedInnerHtml, language.replace("language-", ""))
+            this.highlightedCode = await suggestedHighlight(c, processedInnerHtml, language.replace("language-", ""))
             this.requestUpdate()
         })
     }
