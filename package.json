@@ -14,7 +14,7 @@
     "Kevin Frey",
     "Cristina Martins Rodrigues"
   ],
-  "version": "0.11.0",
+  "version": "0.12.0",
   "main": "dist/web-components.es.js",
   "exports": {
     ".": "./dist/web-components.es.js"
