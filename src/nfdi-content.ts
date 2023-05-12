@@ -42,7 +42,6 @@ export class Content extends LitElement {
             }
 
             ::slotted(table) {
-                border: 1px solid red !important;
                 overflow-x: scroll;
             }
 
