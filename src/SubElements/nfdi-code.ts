@@ -30,21 +30,6 @@ import mermaid from 'mermaid';
 
 const code_id = 'code'
 
-async function suggestedHighlight(element: HTMLElement | null | undefined, code: string, language: string) : Promise<string> {
-	if (Prism.languages[language]) {
-		return Prism.highlight(code, Prism.languages[language], language) //+ lineNumbersWrapper;
-	} else if (language = 'mermaid') {
-        // mermaid.initialize({startOnLoad: true})
-        const { svg, bindFunctions } = await mermaid.render(code_id, code)
-        element!.innerHTML = svg;
-        bindFunctions?.(element!);
-        return ''
-    } else {
-        console.log('grammar not found')
-		return Prism.util.encode(code).toString() //+ lineNumbersWrapper;
-	}
-}
-
 function trimCode(code: string) {
     const start = '<script type="text/plain">'
     const end = '</script>'
@@ -147,16 +132,34 @@ export class Code extends LitElement {
     ]
 
     @property()
-    highlightedCode?: string
+    rawCode?: string
 
     render() {
         return html`
             <div id="maincontainer">
                 <button class="button is-small copybutton is-ghost" @click=${this._copyTextToClipboard}>copy</button>
-                <pre id=${code_id} class="line-numbers"><code>${unsafeHTML(this.highlightedCode)}<slot></slot></code></pre>
+                <pre id=${code_id} class="line-numbers"><code>${unsafeHTML(this.innerHTML)}<slot></slot></code></pre>
             </div>
         `
     }
+
+    private async suggestedHighlight(element: HTMLElement | null | undefined, code: string, language: string) : Promise<void> {
+        if (Prism.languages[language]) {
+            let highlightedCode = Prism.highlight(code, Prism.languages[language], language)
+            element!.innerHTML = highlightedCode
+            //+ lineNumbersWrapper;
+        } else if (language = 'mermaid') {
+            // mermaid.initialize({startOnLoad: true})
+            const { svg, bindFunctions } = await mermaid.render(code_id, code)
+            element!.innerHTML = svg;
+            bindFunctions?.(element!);
+        } else {
+            console.log('grammar not found')
+            let highlightedCode = Prism.util.encode(code).toString()
+            element!.innerHTML  = highlightedCode//+ lineNumbersWrapper;
+        }
+    }
+
     // https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
     private fallbackCopyTextToClipboard(text: string) {
         const textArea = document.createElement('textarea')
@@ -171,9 +174,8 @@ export class Code extends LitElement {
         document.execCommand('copy')
         textArea.remove()
     }
-
     private _copyTextToClipboard() {
-        let text = processInnerHtml(this.innerHTML)
+        let text = processInnerHtml(this.rawCode!)
         if (!navigator.clipboard) {
             this.fallbackCopyTextToClipboard(!text ? '' : text);
             return;
@@ -203,11 +205,11 @@ export class Code extends LitElement {
                 const newC = isLight(customBGC) ? "black" : "white"
                 c.style.color = newC
             }           
-            this.innerHTML.replace(/&gt;/ig,'>',).replace(/&lt;/ig,'<').replace(/&amp;/ig,'&')
             let processedInnerHtml = processInnerHtml(this.innerHTML)
+            this.rawCode = processedInnerHtml
             // console.log(this.innerHTML)
             // console.log(processedInnerHtml)
-            this.highlightedCode = await suggestedHighlight(c, processedInnerHtml, language.replace("language-", ""))
+            await this.suggestedHighlight(c, processedInnerHtml, language.replace("language-", ""))
             this.requestUpdate()
         })
     }

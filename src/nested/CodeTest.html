@@ -74,6 +74,10 @@
       <!-- /TOC -->
 
       <nfdi-h2>nfdi-code</nfdi-h2>
+      Empty code test
+      <nfdi-code>let files = 
+    Directory.GetFiles(docsPath, "*")
+    |> Array.filter (fun n -> n.Contains @"\_sidebars\" |> not && n.Contains "/_sidebars/" |> not)</nfdi-code>
       <nfdi-code class="language-fsharp">let files = 
     Directory.GetFiles(docsPath, "*")
     |> Array.filter (fun n -> n.Contains @"\_sidebars\" |> not && n.Contains "/_sidebars/" |> not)</nfdi-code>
@@ -90,12 +94,6 @@
     },
     "Test_Bool": true
 }</nfdi-code>
-<my-component>
-    graph LR
-    A --- B
-    B-->C[fa:fa-ban forbidden]
-    B-->D(fa:fa-spinner);
-</my-component>
 Here is a mermaid diagram in nfdi-code
 <nfdi-code class="mermaid">
     graph LR
