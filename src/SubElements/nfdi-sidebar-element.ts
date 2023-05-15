@@ -360,14 +360,8 @@ export class SidebarElementNeo extends LitElement {
     @queryAssignedElements({slot: 'child'})
     _listItems!: Array<HTMLElement>;
 
-
     @property({type: String})
     hasChildren = false;
-
-    private _testLog() {
-        console.log(this._listItems.length)
-        console.log(this._listItems.length >= 1)
-    }
 
     private expandButton (isActive: boolean) {
         return html`
@@ -379,22 +373,24 @@ export class SidebarElementNeo extends LitElement {
 
     private updateActivePage() {
         const currentURL = standardizeUrl(window.location.href)
-        console.log("[CURRENT_URL]", currentURL)
         const slots = this.querySelectorAll('a');
         let anyActivePage = false
+        // This is used to make sure that any unused hash urls do not close all child containers on sidebar 
+        let foundInAny = false
         slots.forEach(function(anchor) {
             let anchorHREF = standardizeUrl(anchor.href)
             if (currentURL == anchorHREF) {
                 anyActivePage = true
+                foundInAny = true
                 anchor.style.textDecoration = "underline"
-                console.log("[ActiveSubpage]", anchorHREF)
             } else {
                 anchor.style.textDecoration = ''
-                console.log("[InactiveSubpage]", anchorHREF)
             }
         })
-        this.hasActiveSubpage = anyActivePage;
-        this.isActive = anyActivePage;
+        if (foundInAny) {
+            this.hasActiveSubpage = anyActivePage;
+            this.isActive = anyActivePage;
+        }
     }
 
     render() {
@@ -402,7 +398,6 @@ export class SidebarElementNeo extends LitElement {
           <div>
             <div id="main-link" class="${this.hasChildren ? 'hasChildren' : '' } ${this.hasActiveSubpage ? 'hasActiveSubpage' : '' }">
                 <slot></slot>
-                <!-- <button @click="${this._testLog}">T</button> -->
                 ${this.hasChildren ? this.expandButton (this.isActive) : html``}
             </div>
             <div class="${this.hasChildren ? 'children' : 'childless'} ${this.isActive ? 'is-active' : ''}">
