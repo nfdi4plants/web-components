@@ -1,8 +1,9 @@
-import { html, css, LitElement } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
+import { html, css, LitElement, nothing } from 'lit'
+import { customElement, property, queryAssignedElements } from 'lit/decorators.js'
 import { bulmaStyles } from '../cssts/bulma-css'
 import * as Colors from '../cssts/nfdi-colors.js'
 import { isLight } from '../UtilFunctions/isLight'
+import { devNull } from 'os'
 
 @customElement('nfdi-sidebar-title')
 export class SidebarTitle extends LitElement { 
@@ -260,10 +261,175 @@ export class SidebarElement extends LitElement {
     }
 };
 
+function standardizeUrl (url: string) {
+    return url.replace(/\/+$/, "");
+}
 
+@customElement('nfdi-sidebar-eleneo')
+export class SidebarElementNeo extends LitElement {
+
+    static styles = [
+        bulmaStyles,
+        css`
+
+            #main-link {
+                padding-left: 0.5rem;
+                display: flex;
+                align-items: center;
+                cursor: pointer
+            }
+
+            #main-link.hasChildren {
+                font-weight: bold
+            }
+
+            .myIcon {
+                height: 100%;
+                line-height: 100%;
+                /* cursor: pointer; */
+                display: inline-block;
+                margin: 0px 0.25rem;
+                margin-left: auto;
+                font-style: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                color: var(--accent-text-color, ${Colors.nfdiBlack}) !important;
+                transition: transform 0.1s ease-in-out;
+                user-select: none
+            }
+
+            .hasActiveSubpage {
+                text-decoration: underline;
+            }
+
+            .myIcon.isActive { 
+                transform: rotate(90deg);
+            }
+
+            .children {
+                display: none
+            }
+
+            .childless {
+                display: none;
+            }
+
+            .is-active { 
+                display: block !important
+            }
+
+            #main-link ::slotted(*) {
+                width: 100%;
+            }
+            
+            ::slotted(*) { 
+                color: var(--sidebar-text-color, ${Colors.nfdiBlack}) !important;
+                padding-bottom: 0.15rem;
+                padding-top: 0.15rem;
+            }
+
+            #main-link:hover, ::slotted(a:hover) { 
+                background-color: var(--element-background-color, ${Colors.nfdiDarkblue});
+            }
+            
+            .children ::slotted(*) { 
+                display: block;
+            }
+
+            .children ::slotted(a) {
+                padding-left: 1.25rem;
+            }
+
+            .children ::slotted(nfdi-sidebar-eleneo) {
+                padding-left: 0.75rem;
+            }
+            `
+    ]
+
+    @property({type: Boolean})
+    isActive = false;
+
+    @property({type: Boolean})
+    hasActiveSubpage =  false
+
+    private _toggleActive() {
+        this.isActive = !this.isActive
+    }
+
+    @queryAssignedElements({slot: 'child'})
+    _listItems!: Array<HTMLElement>;
+
+
+    @property({type: String})
+    hasChildren = false;
+
+    private _testLog() {
+        console.log(this._listItems.length)
+        console.log(this._listItems.length >= 1)
+    }
+
+    private expandButton (isActive: boolean) {
+        return html`
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" width="1rem" height="1rem" class="${ isActive ? `myIcon isActive` : `myIcon`}" @click="${this._toggleActive}">
+                <path fill="currentColor" d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"/>
+            </svg>
+        `
+    }
+
+    private updateActivePage() {
+        const currentURL = standardizeUrl(window.location.href)
+        console.log("[CURRENT_URL]", currentURL)
+        const slots = this.querySelectorAll('a');
+        let anyActivePage = false
+        slots.forEach(function(anchor) {
+            let anchorHREF = standardizeUrl(anchor.href)
+            if (currentURL == anchorHREF) {
+                anyActivePage = true
+                anchor.style.textDecoration = "underline"
+                console.log("[ActiveSubpage]", anchorHREF)
+            } else {
+                anchor.style.textDecoration = ''
+                console.log("[InactiveSubpage]", anchorHREF)
+            }
+        })
+        this.hasActiveSubpage = anyActivePage;
+        this.isActive = anyActivePage;
+    }
+
+    render() {
+        return html`
+          <div>
+            <div id="main-link" class="${this.hasChildren ? 'hasChildren' : '' } ${this.hasActiveSubpage ? 'hasActiveSubpage' : '' }">
+                <slot></slot>
+                <!-- <button @click="${this._testLog}">T</button> -->
+                ${this.hasChildren ? this.expandButton (this.isActive) : html``}
+            </div>
+            <div class="${this.hasChildren ? 'children' : 'childless'} ${this.isActive ? 'is-active' : ''}">
+                <slot name="child"></slot>
+            </div>
+          </div>
+        `;
+      }
+
+    connectedCallback() {
+        super.connectedCallback()
+        setTimeout(() => {
+            this.hasChildren = (this._listItems.length >= 1);
+            let main = this 
+            main.updateActivePage()
+            window.addEventListener('hashchange', function() {
+                // Function to be executed when the window.location hash changes
+                main.updateActivePage();
+            })
+            this.requestUpdate()
+        })
+    }
+}
 
 declare global {
     interface HTMLElementTagNameMap {
-        'nfdi-sidebar-element': SidebarElement
+        'nfdi-sidebar-element': SidebarElement,
+        'nfdi-sidebar-eleneo': SidebarElementNeo
     }
 }

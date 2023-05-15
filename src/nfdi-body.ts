@@ -7,6 +7,7 @@ import * as Colors from './cssts/nfdi-colors'
 const sidebar = html`
     <div class="column is-narrow sidebar-column">
         <nfdi-sidebar>
+            <slot name="searchbar" slot="searchbar"></slot>
             <slot name="sidebar"></slot>
         </nfdi-sidebar>
     </div>

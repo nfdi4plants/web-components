@@ -17,5 +17,6 @@ export const nfdiOliveLighter80 = css`#f0f5e6`
 export const nfdiRed = css`#C21F3A`
 
 export const nfdiBlack = css`#3A3A3A`
-export const nfdiWhite = css`#FEFEFE`
+export const nfdiBlackLighter = css`#212121`
+export const nfdiWhite = css`#fefefe`
 export const nfdiLightgrey = css`#ECEBEB`

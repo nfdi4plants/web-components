@@ -61,10 +61,44 @@
     </style>
   </head>
   <body>
-    <nfdi-navbar></nfdi-navbar>
+    <nfdi-navbar>Test</nfdi-navbar>
     <nfdi-body class="content" hasSidebar="true">
       <!-- sidebar -->
-      <nfdi-sidebar-element slot="sidebar" isActive=true>
+        <div slot="searchbar">  
+            <link href="/_pagefind/pagefind-ui.css" rel="stylesheet">
+            <script src="/_pagefind/pagefind-ui.js" type="text/javascript"></script>
+            <div id="search"></div>
+            <script>
+                window.addEventListener('DOMContentLoaded', (event) => {
+                    new PagefindUI({ element: "#search" });
+                });
+            </script>
+        </div>
+      <nfdi-sidebar-eleneo slot="sidebar">
+          <a href="/">Theory</a>
+          <a href="/#" slot="child">Metadata</a>
+          <a href="/#what-is-metadata" slot="child">What is metadata?</a>
+          <a href="/#where-does-metadata-come-from" slot="child">Where does metadata come from?</a>
+          <a href="/#why-do-i-benefit-from-metadata" slot="child">Why do I benefit from metadata?</a>
+          <nfdi-sidebar-eleneo slot="child">
+            <a href="/#what-tasks-are-important-for-rich-metadata">What tasks are important for rich metadata?</a>
+            <a href="/#collection" slot="child">Collection</a>
+            <a href="/#structuring" slot="child">Structuring</a>
+            <a href="/#sharing-and-curation" slot="child">Sharing and curation</a>
+          </nfdi-sidebar-eleneo>
+        </nfdi-sidebar-eleneo>
+        <!-- <nfdi-sidebar-eleneo slot="sidebar">
+            <a href="/src/nested/CodeTest.html">Tests</a>
+            <a slot="child" href="/src/nested/CodeTest.html" >CodeTest</a>
+            <a slot="child" href="/src/nested/TableTest.html">TableTest</a>
+            <nfdi-sidebar-eleneo slot="child">
+                <a href="/src/nested/HeaderTest.html">HeaderTests</a>
+                <a slot="child" href="/src/nested/HeaderTest.html#ipsum-1">Ipsum 1</a>
+                <a slot="child" href="/src/nested/HeaderTest.html#ipsum-2">Ipsum 2</a>
+            </nfdi-sidebar-eleneo>
+            <a slot="child">Emojis! ✨</a>
+        </nfdi-sidebar-eleneo> -->
+      <!-- <nfdi-sidebar-element slot="sidebar" isActive=true>
           <div slot="title">Theory</div>
           <h1 slot="inner" href="/">Metadata</h1>
           <h2 slot="inner" href="/#what-is-metadata">What is metadata?</h2>
@@ -83,8 +117,8 @@
         <h2 slot="inner" href="/src/nested/HeaderTest.html#ipsum-1">Ipsum 1</h2>
         <h2 slot="inner" href="/src/nested/HeaderTest.html#ipsum-2">Ipsum 2</h2>
         <h1 slot="inner">Emojis! ✨</h1>
-        <h1 slot="inner" href="/src/nested/FAIR.html">FAIR</h1>
-    </nfdi-sidebar-element>
+        <h1 slot="inner" href="/src/nested/FAIR.html">FAIR</h1> 
+      </nfdi-sidebar-element> -->
       <!-- content -->
       <h1>Metadata</h1>
       <!-- TOC -->

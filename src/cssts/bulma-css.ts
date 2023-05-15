@@ -782,17 +782,17 @@ th:not([align]) {
   text-align: inherit;
 }
 
-:host {
+/* :host {
   background-color: white;
   font-size: 16px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   min-width: 300px;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: scroll; 
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%;
-}
+} */
 
 article,
 aside,
@@ -10709,7 +10709,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   padding: 3rem 1.5rem 6rem;
 }
 
-:host,
+/* :host, */
 body {
   background-color: #fafafa;
 }
