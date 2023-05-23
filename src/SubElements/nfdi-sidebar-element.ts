@@ -1,9 +1,8 @@
-import { html, css, LitElement, nothing } from 'lit'
+import { html, css, LitElement } from 'lit'
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js'
 import { bulmaStyles } from '../cssts/bulma-css'
 import * as Colors from '../cssts/nfdi-colors.js'
 import { isLight } from '../UtilFunctions/isLight'
-import { devNull } from 'os'
 
 @customElement('nfdi-sidebar-title')
 export class SidebarTitle extends LitElement { 
