@@ -109,15 +109,15 @@ export class Footer extends LitElement {
                         </div>
                         <div class="block">
                         <li>
-                            <a href="${mainPageBaseUrl}content/jobs.html">
-                            Jobs
+                            <a href="${mainPageBaseUrl}events.html">
+                            Events
                             </a>
                         </li>
                         </div>
                         <div class="block">
                         <li>
-                            <a href="${dataPLANGeneratorUrl}">
-                            DataPLAN
+                            <a href="${mainPageBaseUrl}content/learn-more/latest-releases.html">
+                            Latest Releases
                             </a>
                         </li>
                         </div>
@@ -125,6 +125,13 @@ export class Footer extends LitElement {
                         <li>
                             <a href="${gitlabBaseUrl}">
                             PLANT-DataHUB
+                            </a>
+                        </li>
+                        </div>
+                        <div class="block">
+                        <li>
+                            <a href="${dataPLANGeneratorUrl}">
+                            DataPLAN
                             </a>
                         </li>
                         </div>
