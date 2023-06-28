@@ -88,15 +88,22 @@ export class Navbar extends LitElement {
                         </a>
                     </div>
                 </div>
-                <a class=${this.url == "${mainPageBaseUrl}news.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}news.html">
-                News
-                </a>
-                <a class=${this.url == "${mainPageBaseUrl}content/jobs.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}content/jobs.html">
-                Jobs
-                </a>
-                <a class=${this.url == dataPLANGeneratorUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${dataPLANGeneratorUrl}">
-                DataPLAN
-                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link" href="${mainPageBaseUrl}news.html">
+                    News
+                    </a>
+                    <div class="navbar-dropdown is-active smooth-hover">
+                        <a class=${this.url == "${mainPageBaseUrl}news.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}news.html">
+                            News
+                        </a>
+                        <a class=${this.url == "${mainPageBaseUrl}events.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}events.html">
+                            Events
+                        </a>
+                        <a class=${this.url == "${mainPageBaseUrl}content/learn-more/latest-releases.html" ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${mainPageBaseUrl}content/learn-more/latest-releases.html">
+                            Latest Releases
+                        </a>
+                    </div>
+                </div>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class=${this.url == gitlabBaseUrl ? "navbar-link is-active smooth-hover" : "navbar-link"}>
                     DataHUB
@@ -110,6 +117,9 @@ export class Navbar extends LitElement {
                         </a>
                     </div>
                 </div>
+                <a class=${this.url == dataPLANGeneratorUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${dataPLANGeneratorUrl}">
+                DataPLAN
+                </a>
                 <a class=${this.url.includes(knowledgeBaseUrl,0)  ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${knowledgeBaseUrl}index.html">
                 Knowledge Base
                 </a>
