@@ -8,13 +8,13 @@
     "url": "https://nfdi4plants.de/"
   },
   "contributors": [
-    "Benedikt Venn",
-    "Bianca Frommer",
-    "Kevin Schneider",
     "Kevin Frey",
-    "Cristina Martins Rodrigues"
+    "Cristina Martins Rodrigues",
+    "Benedikt Venn",
+    "Kevin Schneider",
+    "Bianca Frommer"
   ],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/web-components.es.js",
   "exports": {
     ".": "./dist/web-components.es.js"
