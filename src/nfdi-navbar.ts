@@ -1,7 +1,7 @@
 import { html, css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { bulmaStyles } from './cssts/bulma-css'
-import {mainPageBaseUrl, gitlabBaseUrl, knowledgeBaseUrl, dataPLANGeneratorUrl, gitlabBioDatenUrl} from './params'
+import {mainPageBaseUrl, gitlabBaseUrl, knowledgeBaseUrl, dataPLANGeneratorUrl, gitlabBioDatenUrl, arcsearchUrl} from './params'
 import * as Colors from './cssts/nfdi-colors'
 
 /**
@@ -105,7 +105,7 @@ export class Navbar extends LitElement {
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class=${this.url == gitlabBaseUrl ? "navbar-link is-active smooth-hover" : "navbar-link"}>
+                    <a class=${this.url == arcsearchUrl ? "navbar-link is-active smooth-hover" : "navbar-link"} href="${arcsearchUrl}">
                     DataHUB
                     </a>
                     <div class="navbar-dropdown is-active smooth-hover">
@@ -114,6 +114,10 @@ export class Navbar extends LitElement {
                         </a>
                         <a class=${this.url == gitlabBioDatenUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${gitlabBioDatenUrl}">
                         BioDaten
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class=${this.url == arcsearchUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${arcsearchUrl}">
+                        ARC Search
                         </a>
                     </div>
                 </div>

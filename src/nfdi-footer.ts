@@ -2,7 +2,7 @@ import { html, css, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { bulmaStyles } from './cssts/bulma-css'
 import * as Colors from './cssts/nfdi-colors.js'
-import { mainPageBaseUrl, gitlabBaseUrl, knowledgeBaseUrl, dataPLANGeneratorUrl } from './params'
+import { mainPageBaseUrl, gitlabBaseUrl, knowledgeBaseUrl, dataPLANGeneratorUrl, arcsearchUrl } from './params'
 
 /**
  * This element needs html {'padding-top: 3.25rem;'} for the source html.
@@ -125,6 +125,13 @@ export class Footer extends LitElement {
                         <li>
                             <a href="${gitlabBaseUrl}">
                             PLANT-DataHUB
+                            </a>
+                        </li>
+                        </div>
+                        <div class="block">
+                        <li>
+                            <a href="${arcsearchUrl}">
+                            ARC Search
                             </a>
                         </li>
                         </div>
