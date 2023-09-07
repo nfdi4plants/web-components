@@ -3,4 +3,5 @@ export const knowledgeBaseUrl = "https://nfdi4plants.org/nfdi4plants.knowledgeba
 export const gitlabBaseUrl = "https://git.nfdi4plants.org/"
 export const gitlabBioDatenUrl = "https://gitlab.nfdi4plants.de/"
 export const dataPLANGeneratorUrl = "https://dmpg.nfdi4plants.org"
+export const ARChiveUrl = "https://archive.nfdi4plants.org/communities/dataplant"
 export const arcsearchUrl = "https://arcregistry.nfdi4plants.org/arcsearch"
