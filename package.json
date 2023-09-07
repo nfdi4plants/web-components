@@ -14,7 +14,7 @@
     "Kevin Schneider",
     "Bianca Frommer"
   ],
-  "version": "1.0.2",
+  "version": "1.2.0",
   "main": "dist/web-components.es.js",
   "exports": {
     ".": "./dist/web-components.es.js"
