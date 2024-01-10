@@ -1,7 +1,7 @@
 import { html, css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { bulmaStyles } from './cssts/bulma-css'
-import {mainPageBaseUrl, gitlabBaseUrl, knowledgeBaseUrl, dataPLANGeneratorUrl, gitlabBioDatenUrl, arcsearchUrl, ARChiveUrl} from './params'
+import {mainPageBaseUrl, gitlabBaseUrl, knowledgeBaseUrl, dataPLANGeneratorUrl, gitlabBioDatenUrl, arcsearchUrl, ARChiveUrl, gitlabPlantMicrobeUrl} from './params'
 import * as Colors from './cssts/nfdi-colors'
 
 /**
@@ -29,8 +29,29 @@ export class Navbar extends LitElement {
             color: var(--element-text-color, white);
             border-color: var(--element-text-color, white);
         }
-        .navbar-divider {
-            background-color: var(--element-text-color, white);
+
+        .separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+          
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #000;
+            border-color: whitesmoke;
+            border-height: 50px;
+        }
+          
+        .separator:not(:empty)::before {
+            margin-right: .25em;
+        }
+          
+        .separator:not(:empty)::after {
+            margin-left: .25em;
         }
 
         @media only screen and (max-width: 1023px) {
@@ -110,15 +131,25 @@ export class Navbar extends LitElement {
                     </a>
                     <div class="navbar-dropdown is-active smooth-hover">
                         <a class=${this.url == gitlabBaseUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${gitlabBaseUrl}">
-                        DataPLANT
+                        DataHUB (reference)
                         </a>
+                        <div class="separator"><i>on-premise</i></div>
                         <a class=${this.url == gitlabBioDatenUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${gitlabBioDatenUrl}">
-                        BioDaten
+                        DataHUB (federated)
+                        </a>                        
+                        <a class=${this.url == gitlabPlantMicrobeUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${gitlabPlantMicrobeUrl}">
+                        TRR356
                         </a>
-                        <hr class="navbar-divider">
+                        <div class="separator"><a href="${mainPageBaseUrl}content/datahub.html" title="DataHUB Information">
+                        <!-- https://fontawesome.com/v6.0/docs/web/add-icons/svg-bare -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true" focusable="false" viewBox="0 0 512 512">
+                        <path fill="currentColor" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
+                        </svg>
+                        </a></div>
                         <a class=${this.url == arcsearchUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${arcsearchUrl}">
                         ARC Search
                         </a>
+
                     </div>
                 </div>
                 <a class=${this.url == ARChiveUrl ? "navbar-item is-active smooth-hover" : "navbar-item"} href="${ARChiveUrl}">
