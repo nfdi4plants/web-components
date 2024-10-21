@@ -1,3 +1,7 @@
+> [!CAUTION]
+> This repository is archived and not further developed!
+
+
 # nfdi4plants/web-components
 
 ## NPM
